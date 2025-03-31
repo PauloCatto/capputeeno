@@ -1,7 +1,7 @@
 <section>
   <div class="header">
     <div>
-      <h2 class="title">Capputeeno</h2>
+      <h2 class="title" routerLink="home">Capputeeno</h2>
     </div>
 
     <div class="header-container">
@@ -11,8 +11,14 @@
       </div>
 
       <div class="shopping-container">
-        <img src="../../../assets/svgs/shopping-bag.svg" alt="Shopping Bag">
-        <img src="../../../assets/svgs/qtd-msg.svg" alt="Quantity" class="qtd-icon">
+        <a routerLink="/shopping-cart">
+          <img src="../../../assets/svgs/shopping-bag.svg" alt="Shopping Bag" />
+          <img
+            src="../../../assets/svgs/qtd-msg.svg"
+            alt="Quantity"
+            class="qtd-icon"
+          />
+        </a>
       </div>
     </div>
   </div>
