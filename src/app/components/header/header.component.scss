@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  background-color: #dddddd;
+
+  .title {
+    font-family: Saira Stencil One;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #5d5d6d;
+  }
+
+  .header-container {
+    display: flex;
+    gap: 65px;
+
+    .search-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 10px 40px 10px 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f3f5f6;
+      outline: none;
+    }
+
+    .search-container i {
+      position: absolute;
+      top: 50%;
+      left: 270px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #5d5d6d;
+    }
+
+    .shopping-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .shopping-container img {
+      width: 25px;
+      position: absolute;
+    }
+
+    .qtd-icon {
+      position: absolute;
+      top: 15px;
+      width: 18px;
+      height: 18px;
+      left: 8px;
+    }
+  }
+}
