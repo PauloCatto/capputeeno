@@ -1,10 +1,18 @@
-<div>
-  <h1>Catalog</h1>
+
+  <section>
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z">
+      <mat-tab label="First"> Content 1 </mat-tab>
+      <mat-tab label="Second"> Content 2 </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+    
+  </section>
+  <!-- <h1>Catalog</h1>
   <div *ngFor="let item of products">
     <p>{{ item.description }}</p>
     <p>{{ item.id }}</p>
     <img [src]="item.image_url" alt="">
     <p>{{ item.name }}</p>
     <p>{{ item.price_in_cents | currency: 'USD' }}</p>
-  </div>
-</div>
+  </div> -->
+
