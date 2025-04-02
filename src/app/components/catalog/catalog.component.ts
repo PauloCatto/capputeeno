@@ -9,6 +9,14 @@ import { CatalogService } from 'src/app/services/catalog.service';
 export class CatalogComponent implements OnInit {
 
   products: any[] = [];
+  tabs = [
+    { label: 'Todos os Produtos' },
+    { label: 'Camisetas' },
+    { label: 'Canecas' }
+  ];
+  selectedTab = 0;
+  pages = [1, 2, 3, 4, 5, 6];
+  selectedPage = 1;
 
   constructor(private catalogService: CatalogService) {}
 
@@ -21,5 +29,10 @@ export class CatalogComponent implements OnInit {
       console.error(error);
     });
   }
+
+  selectTab(index: number) {
+    this.selectedTab = index;
+  }
+
 
 }
