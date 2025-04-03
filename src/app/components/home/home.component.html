@@ -1,5 +1,2 @@
-<app-header></app-header>
-<div class="home-container">
-  <app-catalog></app-catalog>
-
-</div>
+<app-header (searchResults)="filteredProducts = $event"></app-header>
+<app-catalog [filtered]="filteredProducts"></app-catalog>

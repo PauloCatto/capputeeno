@@ -1,1 +1,35 @@
-<p>product works!</p>
+<div class="content-header">
+  <app-header></app-header>
+</div>
+
+<div *ngIf="product; else noProduct" class="product-container">
+  <button class="back-button" [routerLink]="'/'">
+    <i class="material-icons">arrow_back</i> Voltar
+  </button>
+
+  <div class="product-grid">
+    <div class="product-image">
+      <img [src]="product.image_url" alt="{{ product.name }}">
+    </div>
+
+    <div class="product-info">
+      <span class="category">Caneca</span>
+      <h2 class="name">{{ product.name }}</h2>
+
+      <p class="price">{{ product.price_in_cents / 100 | currency: 'BRL' }}</p>
+
+      <span class="frete">*Frete de R$40,00 para todo o Brasil. Grátis para compras acima de R$900,00.</span>
+
+      <span class="description-label">DESCRIÇÃO</span>
+      <p class="description">{{ product.description }}</p>
+
+      <button class="add-to-cart">
+        <i class="material-icons">shopping_cart</i> Adicionar ao Carrinho
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #noProduct>
+  <p>Produto não encontrado!</p>
+</ng-template>

@@ -1,35 +1,53 @@
-<section class="container">
-<div class="custom-tab-group">
-  <div
-    class="custom-tab"
-    *ngFor="let tab of tabs; let i = index"
-    [class.active]="selectedTab === i"
-    (click)="selectTab(i)">
-    {{ tab.label }}
-    <div class="underline" *ngIf="selectedTab === i"></div>
+<section class="container" *ngIf="filtered.length === 0">
+  <div class="custom-tab-group">
+    <div
+      class="custom-tab"
+      *ngFor="let tab of tabs; let i = index"
+      [class.active]="selectedTab === i"
+      (click)="selectTab(i)"
+    >
+      {{ tab.label }}
+      <div class="underline" *ngIf="selectedTab === i"></div>
+    </div>
   </div>
 
-</div>
-
-<div class="content">
-  <ng-container *ngIf="selectedTab === 0">
-    <p>Exibindo: Todos os Produtos</p>
-  </ng-container>
-  <ng-container *ngIf="selectedTab === 1">
-    <p>Exibindo: Camisetas</p>
-  </ng-container>
-  <ng-container *ngIf="selectedTab === 2">
-    <p>Exibindo: Canecas</p>
-  </ng-container>
-</div>
+  <div class="content">
+    <div class="product-grid">
+      <div
+        *ngFor="let item of tabs[selectedTab]?.data"
+        class="product-card"
+        (click)="onProductClick(item)"
+      >
+        <img [src]="item.image_url" alt="{{ item.name }}" />
+        <h3 class="name">{{ item.name }}</h3>
+        <p class="divider"></p>
+        <p class="price">
+          {{
+            item.price_in_cents / 100 | currency : "BRL" : "symbol" : "1.2-2"
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
-  <!-- <h1>Catalog</h1>
-  <div *ngFor="let item of products">
-    <p>{{ item.description }}</p>
-    <p>{{ item.id }}</p>
-    <img [src]="item.image_url" alt="">
-    <p>{{ item.name }}</p>
-    <p>{{ item.price_in_cents | currency: 'USD' }}</p>
-  </div> -->
-
+<section class="container" *ngIf="filtered.length > 0">
+  <div class="content filtered">
+    <div class="product-grid">
+      <div
+        *ngFor="let item of filtered"
+        class="product-card"
+        (click)="onProductClick(item)"
+      >
+        <img [src]="item.image_url" alt="{{ item.name }}" />
+        <h3 class="name">{{ item.name }}</h3>
+        <p class="divider"></p>
+        <p class="price">
+          {{
+            item.price_in_cents / 100 | currency : "BRL" : "symbol" : "1.2-2"
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

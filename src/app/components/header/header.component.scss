@@ -6,7 +6,8 @@
   background-color: #ffffff;
 
   .title {
-    font-family: Saira Stencil One;
+    padding-top: 10px;
+    font-family: 'Saira Stencil One';
     font-weight: 400;
     font-size: 40px;
     line-height: 150%;
@@ -33,6 +34,8 @@
       border-radius: 4px;
       background-color: #f3f5f6;
       outline: none;
+      color: #aaaaaa;
+      font-family: 'Saira Stencil One';
     }
 
     .search-container i {

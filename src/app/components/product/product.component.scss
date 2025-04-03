@@ -1,0 +1,136 @@
+.content-header {
+  height: 65px !important;
+}
+
+.product-container {
+  background-color: #f0f0f5;
+  margin: 20px auto;
+  padding: 50px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 110px;
+  font-family: Saira;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #617480;
+}
+
+.back-button i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  margin-left: 70px
+}
+
+.product-image img {
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category {
+  font-family: Saira;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #41414d;
+}
+
+.name {
+  font-family: Saira;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #41414d;
+}
+
+.price {
+  font-family: Saira;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #09090a;
+}
+
+.frete {
+  font-family: Saira;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #41414d;
+  margin-bottom: 50px;
+}
+
+.description-label {
+  font-family: Saira;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #737380;
+}
+
+.description {
+  font-family: Saira;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #41414d;
+}
+
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #115d8c;
+  color: white;
+  font-size: 18px;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  gap: 10px;
+  margin-top: 160px
+}
+
+.add-to-cart i {
+  font-size: 24px;
+}
+
+.add-to-cart:hover {
+  background-color: #0e4a6f;
+}

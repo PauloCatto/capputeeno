@@ -1,12 +1,16 @@
 <section>
   <div class="header">
     <div>
-      <h2 class="title" routerLink="home">Capputeeno</h2>
+      <h2 class="title" routerLink="home">capputeeno</h2>
     </div>
 
     <div class="header-container">
       <div class="search-container">
-        <input type="text" placeholder="Procurando por algo especifico?" />
+        <input
+          type="text"
+          placeholder="Procurando por algo especifico?"
+          (input)="onSearch($event)"
+        />
         <i class="material-icons">search</i>
       </div>
 

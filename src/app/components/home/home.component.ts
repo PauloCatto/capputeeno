@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  filteredProducts: Product[] = [];
 
+  constructor(){}
+
+  updateFilteredProducts(products: Product[]) {
+    this.filteredProducts = products;
+  }
 }
