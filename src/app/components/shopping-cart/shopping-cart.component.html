@@ -1,1 +1,66 @@
-<p>shopping-cart works!</p>
+<div class="content-header">
+  <app-header></app-header>
+</div>
+<button class="back-button" [routerLink]="'/'">
+  <i class="material-icons">arrow_back</i> Voltar
+</button>
+<div class="cart-container">
+  <div class="cart-header">
+    <h1 class="title">SEU CARRINHO</h1>
+    <div class="cart-header-info">
+      <p class="total-produtos">Total ({{ getTotalQuantity() }} produtos)</p>
+      <p class="value">{{ getTotalPrice() | currency:'BRL' }}</p>
+    </div>
+  </div>
+
+  <div class="cart-content">
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let item of products">
+        <img class="image" [src]="item.image_url" alt="{{ item.name }}">
+        <div class="item-info">
+          <div class="item-header">
+            <h2>{{ item.name }}</h2>
+            <button (click)="removeItem(item)" class="delete-button">
+              <i class="material-icons">delete_forever</i>
+            </button>
+          </div>
+          <p class="description">{{ item.description }}</p>
+          <div class="item-details">
+            <select>
+              <option *ngFor="let i of [].constructor(10); let index = index">
+                {{ index + 1 }}
+              </option>
+            </select>
+            <p class="price">{{ (item.price_in_cents / 100) | currency:'BRL' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary" [ngClass]="{'empty-cart': hasFewProducts}">
+      <h2>RESUMO DO PEDIDO</h2>
+      <div class="summary-sub">
+        <p>Subtotal de produtos</p>
+        <p> {{ getTotalPrice() | currency:'BRL' }}</p>
+      </div>
+      <div class="summary-entrega">
+        <p>Entrega</p>
+        <p>R$ 40,00</p>
+      </div>
+      <hr class="divider">
+      <div class="summary-total">
+        <p class="total">Total</p>
+        <p>{{ (getTotalPrice() + 40) | currency:'BRL' }}</p>
+      </div>
+
+      <button class="add-purchase-button">Finalizar Compra</button>
+
+      <div class="cart-info" [ngClass]="{'empty-info': hasFewProducts}">
+        <p><a href="#">Ajuda</a></p>
+        <p><a href="#">Reembolsos</a></p>
+        <p><a href="#">Entregas e frete</a></p>
+        <p><a href="#">Trocas e devoluções</a></p>
+      </div>
+    </div>
+  </div>
+</div>

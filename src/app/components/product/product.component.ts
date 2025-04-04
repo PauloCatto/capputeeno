@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.interface';
 
 @Component({
@@ -9,7 +10,7 @@ import { Product } from 'src/app/models/product.interface';
 export class ProductComponent implements OnInit {
   product: Product | null = null;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
       const storedProduct = localStorage.getItem('selectedProduct');
@@ -19,4 +20,12 @@ export class ProductComponent implements OnInit {
         console.error('Nenhum produto encontrado no localStorage.');
       }
   }
+
+  addToCart(product: Product): void {
+    let cart: Product[] = JSON.parse(localStorage.getItem('selectedProducts') || '[]');
+    cart.push(product);
+    localStorage.setItem('selectedProducts', JSON.stringify(cart));
+    this.router.navigate(['/shopping-cart']);
+  }
+
 }

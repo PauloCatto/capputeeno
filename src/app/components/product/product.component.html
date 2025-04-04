@@ -23,7 +23,7 @@
       <span class="description-label">DESCRIÇÃO</span>
       <p class="description">{{ product.description }}</p>
 
-      <button class="add-to-cart">
+      <button class="add-to-cart" (click)="addToCart(product)">
         <i class="material-icons">shopping_cart</i> Adicionar ao Carrinho
       </button>
     </div>
