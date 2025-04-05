@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Product, Tab } from 'src/app/models/product.interface';
-import { CatalogService } from 'src/app/services/catalog.service';
+import { CatalogService } from 'src/app/services/catalog/catalog.service';
 
 @Component({
   selector: 'app-catalog',
@@ -13,8 +14,13 @@ export class CatalogComponent implements OnInit {
   products: Product[] = [];
   tabs: Tab[] = [];
   selectedTab = 0;
+  loading!: boolean;
 
-  constructor(private catalogService: CatalogService, private router: Router) {}
+  constructor(
+    private catalogService: CatalogService,
+    private router: Router,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.catalogService
@@ -23,11 +29,11 @@ export class CatalogComponent implements OnInit {
         if (data && data.length > 0) {
           this.processProducts(data);
         } else {
-          console.error('NO_PRODUCTS_FOUND');
+          console.error(this.translate.instant('NO_PRODUCTS_FOUND'));
         }
       })
       .catch((error) => {
-        console.error('ERROR_FETCHING_PRODUCTS', error);
+        console.error(this.translate.instant('ERROR_FETCHING_PRODUCTS', error));
       });
   }
 
@@ -54,7 +60,12 @@ export class CatalogComponent implements OnInit {
   }
 
   onProductClick(product: Product) {
+    this.loading = true;
     localStorage.setItem('selectedProduct', JSON.stringify(product));
-    this.router.navigate(['/product']);
+
+    setTimeout(() => {
+      this.loading = false;
+      this.router.navigate(['/product']);
+    }, 2000)
   }
 }

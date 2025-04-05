@@ -10,19 +10,34 @@ export class ShoppingCartComponent implements OnInit {
   products: (Product & { quantity: number })[] = [];
   hasFewProducts: boolean = true;
 
+  constructor(){}
+
   ngOnInit(): void {
     const storedProducts = localStorage.getItem('selectedProducts');
-    this.products = storedProducts ? JSON.parse(storedProducts) : [];
+    const parsedProducts: (Product & { quantity?: number })[] = storedProducts
+      ? JSON.parse(storedProducts)
+      : [];
+
+    this.products = parsedProducts.map((item) => ({
+      ...item,
+      quantity: item.quantity ?? 1,
+    }));
+
     this.updateCartStatus();
   }
 
   getTotalQuantity(): number {
-    return this.products.reduce((total, item) => total + item.quantity, 0);
+    return this.products.reduce(
+      (total, item) => total + (item.quantity ?? 0),
+      0
+    );
   }
 
   getTotalPrice(): number {
     return this.products.reduce(
-      (total, item) => total + (item.price_in_cents / 100) * item.quantity,
+      (total, item) =>
+        total +
+        (((item.price_in_cents ?? 0) * (item.quantity ?? 0)) / 100),
       0
     );
   }

@@ -2,7 +2,7 @@
   <app-header></app-header>
 </div>
 
-<div *ngIf="product; else noProduct" class="product-container">
+<div *ngIf="product" class="product-container">
   <button class="back-button" [routerLink]="'/'">
     <i class="material-icons">arrow_back</i> {{ 'back' | translate }}
   </button>
@@ -30,6 +30,14 @@
   </div>
 </div>
 
-<ng-template #noProduct>
+<!-- <ng-template #noProduct>
   <p>{{ 'not_found' | translate }}</p>
-</ng-template>
+</ng-template> -->
+
+<div class="spinner-container" *ngIf="loading">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate"
+    diameter="50">
+  </mat-progress-spinner>
+</div>

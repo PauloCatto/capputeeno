@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/models/product.interface';
-import { CatalogService } from 'src/app/services/catalog.service';
+import { CatalogService } from 'src/app/services/catalog/catalog.service';
 
 @Component({
   selector: 'app-header',
@@ -50,7 +50,7 @@ export class HeaderComponent {
         );
         this.searchResults.emit(this.filteredProducts);
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error(error);
       });
   }

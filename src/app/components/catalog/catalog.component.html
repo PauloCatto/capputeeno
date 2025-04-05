@@ -1,3 +1,11 @@
+<div class="spinner-container" *ngIf="loading">
+  <mat-progress-spinner
+    color="primary"
+    mode="indeterminate"
+    diameter="50">
+  </mat-progress-spinner>
+</div>
+
 <section class="container" *ngIf="filtered.length === 0">
   <div class="custom-tab-group">
     <div

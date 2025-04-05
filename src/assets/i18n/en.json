@@ -23,5 +23,7 @@
   "NO_PRODUCTS_FOUND": "No products found.",
   "ERROR_FETCHING_PRODUCTS": "Error fetching products.",
   "TSHIRT_FILTER": "t-shirt",
-  "MUG_FILTER": "mug"
+  "MUG_FILTER": "mug",
+  "NO_PRODUCT_IN_STORAGE": "No product found in localStorage.",
+  "PRODUCT_ADDED_SUCCESS": "Product added successfully!"
 }

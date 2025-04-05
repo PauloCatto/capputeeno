@@ -23,5 +23,7 @@
   "NO_PRODUCTS_FOUND": "Nenhum produto encontrado.",
   "ERROR_FETCHING_PRODUCTS": "Erro ao buscar produtos.",
   "TSHIRT_FILTER": "camiseta",
-  "MUG_FILTER": "caneca"
+  "MUG_FILTER": "caneca",
+  "NO_PRODUCT_IN_STORAGE": "Nenhum produto encontrado no localStorage.",
+  "PRODUCT_ADDED_SUCCESS": "Produto adicionado com sucesso!"
 }

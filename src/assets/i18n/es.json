@@ -23,5 +23,7 @@
   "NO_PRODUCTS_FOUND": "Ningún producto encontrado.",
   "ERROR_FETCHING_PRODUCTS": "Error al obtener productos.",
   "TSHIRT_FILTER": "camiseta",
-  "MUG_FILTER": "taza"
+  "MUG_FILTER": "taza",
+  "NO_PRODUCT_IN_STORAGE": "Ningún producto encontrado en el almacenamiento local.",
+  "PRODUCT_ADDED_SUCCESS": "¡Producto agregado con éxito!"
 }
