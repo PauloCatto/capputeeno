@@ -8,7 +8,7 @@
       <div class="search-container">
         <input
           type="text"
-          [placeholder]="'HEADER.SEARCH_PLACEHOLDER' | translate"
+          [placeholder]="'search_placeholder' | translate"
           (input)="onSearch($event)"
         />
         <i class="material-icons">search</i>
@@ -18,11 +18,10 @@
         <div class="shopping-inner">
           <a routerLink="/shopping-cart">
             <img src="../../../assets/svgs/shopping-bag.svg" alt="Shopping Bag" />
-            <img
-              src="../../../assets/svgs/qtd-msg.svg"
-              alt="Quantity"
-              class="qtd-icon"
-            />
+            <span class="qtd-icon">
+              10
+              <!--  Usar o length do carrinho aqui -->
+            </span>
           </a>
 
           <button mat-icon-button [matMenuTriggerFor]="languageMenu">

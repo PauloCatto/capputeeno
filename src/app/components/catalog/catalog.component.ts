@@ -6,7 +6,7 @@ import { CatalogService } from 'src/app/services/catalog.service';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
 })
 export class CatalogComponent implements OnInit {
   @Input() filtered: Product[] = [];
@@ -17,7 +17,8 @@ export class CatalogComponent implements OnInit {
   constructor(private catalogService: CatalogService, private router: Router) {}
 
   ngOnInit(): void {
-    this.catalogService.getProducts()
+    this.catalogService
+      .getProducts()
       .then((data: Product[]) => {
         if (data && data.length > 0) {
           this.processProducts(data);
@@ -37,14 +38,20 @@ export class CatalogComponent implements OnInit {
   processProducts(data: Product[]) {
     this.products = data;
 
+    console.log(this.products)
+
     const allProducts = data;
-    const tshirts = data.filter((product: { name: string; }) => product.name.toLowerCase().includes('camiseta'));
-    const mugs = data.filter((product: { name: string; }) => product.name.toLowerCase().includes('caneca'));
+    const tshirts = data.filter((product: { name: string }) =>
+      product.name.toLowerCase().includes('camiseta')
+    );
+    const mugs = data.filter((product: { name: string }) =>
+      product.name.toLowerCase().includes('caneca')
+    );
 
     this.tabs = [
       { label: 'ALL_PRODUCTS', data: allProducts },
       { label: 'TSHIRTS', data: tshirts },
-      { label: 'MUGS', data: mugs }
+      { label: 'MUGS', data: mugs },
     ];
   }
 

@@ -49,7 +49,6 @@ export class HeaderComponent {
         this.filteredProducts = data.filter((product) =>
           product.name.toLowerCase().includes(inputValue)
         );
-        console.log('Resultados filtrados:', this.filteredProducts);
         this.searchResults.emit(this.filteredProducts);
       })
       .catch((error) => {
