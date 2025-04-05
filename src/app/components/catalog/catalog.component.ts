@@ -37,10 +37,8 @@ export class CatalogComponent implements OnInit {
 
   processProducts(data: Product[]) {
     this.products = data;
-
-    console.log(this.products)
-
     const allProducts = data;
+
     const tshirts = data.filter((product: { name: string }) =>
       product.name.toLowerCase().includes('camiseta')
     );

@@ -5,6 +5,7 @@
 
   .custom-tab-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px 110px;
   }
@@ -78,24 +79,66 @@
     font-weight: 300;
     font-size: 16px;
     line-height: 150%;
-    letter-spacing: 0%;
-    vertical-align: middle;
     color: #41414d;
   }
 
   .price {
     padding-left: 10px;
-    font-family: Saira;
+    font-family: "Saira", sans-serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
-    letter-spacing: 0%;
-    vertical-align: middle;
-    font-family: "Saira", sans-serif;
     color: #09090a;
   }
 
   .filtered {
     padding-top: 50px;
+  }
+
+  @media (max-width: 1200px) {
+    .content {
+      margin: 0px 60px;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .content {
+      margin: 0px 30px;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-tab-group {
+      padding: 20px 40px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .content {
+      margin: 0px 15px;
+    }
+
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+      height: 250px;
+    }
+
+    .custom-tab {
+      font-size: 14px;
+    }
+
+    .custom-tab-group {
+      padding: 10px 20px;
+      justify-content: center;
+    }
   }
 }

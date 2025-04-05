@@ -252,3 +252,28 @@ option {
   background-color: #fff;
   color: #333;
 }
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 0px 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+
+  span {
+    min-width: 20px;
+    text-align: center;
+  }
+}
+

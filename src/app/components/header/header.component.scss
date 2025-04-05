@@ -1,91 +1,165 @@
 .header {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 350px;
+  justify-content: space-between;
+  padding: 16px 20px;
   background-color: #ffffff;
+  gap: 16px;
+  margin: 0 97px;
 
   .title {
-    padding-top: 10px;
-    font-family: "Saira Stencil One";
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 150%;
+    font-family: Saira Stencil One;
+    font-size: 50px;
     color: #5d5d6d;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .header-container {
     display: flex;
-    gap: 65px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    gap: 16px;
 
     .search-container {
       position: relative;
-      width: 100%;
+      min-width: 180px;
+      max-width: 100%;
 
       input {
         width: 100%;
-        padding: 10px 40px 10px 10px;
+        padding: 10px 40px 10px 12px;
         font-size: 16px;
-        border: 2px solid #ccc;
-        border-radius: 4px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
         background-color: #f3f5f6;
+        color: #5d5d6d;
+        font-family: "Saira", sans-serif;
         outline: none;
-        color: #aaaaaa;
-        font-family: "Saira Stencil One";
+        box-sizing: border-box;
       }
 
-      i {
+      i.material-icons {
         position: absolute;
         top: 50%;
-        left: 270px;
+        right: 12px;
         transform: translateY(-50%);
         font-size: 20px;
         color: #5d5d6d;
+        pointer-events: none;
       }
     }
 
-    .shopping-inner {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      position: relative;
+    .shopping-container {
+      flex-shrink: 0;
 
-      a {
-        display: inline-block;
-        position: relative;
-        top: 1px;
-
-        img:first-child {
-          position: relative;
-          top: 0;
-        }
-
-        .cart-icon {
-          position: relative;
-          display: inline-block;
-        }
-
-        .qtd-icon {
-          position: absolute;
-          top: 18px;
-          right: -5px;
-          background-color: red;
-          color: white;
-          font-size: 10px;
-          font-weight: bold;
-          border-radius: 50%;
-          padding: 2px 4px;
-          line-height: 1;
-          text-align: center;
-        }
-      }
-
-      button[mat-icon-button] {
+      .shopping-inner {
         display: flex;
         align-items: center;
-        margin: 0;
-        width: 75px;
+        gap: 12px;
+
+        a {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 28px;
+            height: 28px;
+          }
+
+          .qtd-icon {
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            background-color: red;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            border-radius: 50%;
+            padding: 2px 6px;
+            line-height: 1;
+            text-align: center;
+          }
+        }
+
+        button[mat-icon-button] {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 36px;
+          padding: 0;
+
+          mat-icon {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    .title {
+      font-size: 24px;
+    }
+
+    .header-container {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+
+      .search-container {
+        width: 30%;
+      }
+
+      .shopping-inner {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 12px 16px;
+
+    .title {
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .header-container {
+      gap: 12px;
+
+      .search-container input {
+        font-size: 14px;
+        padding: 8px 38px 8px 10px;
+      }
+
+      .shopping-inner {
+        gap: 8px;
+
+        .qtd-icon {
+          font-size: 9px;
+          padding: 1px 4px;
+          top: -3px;
+          right: -5px;
+        }
+
+        button[mat-icon-button] {
+          width: 32px;
+          height: 32px;
+
+          mat-icon {
+            font-size: 18px;
+          }
+        }
       }
     }
   }

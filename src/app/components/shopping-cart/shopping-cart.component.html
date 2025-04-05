@@ -3,22 +3,24 @@
 </div>
 
 <button class="back-button" [routerLink]="'/product'">
-  <i class="material-icons">arrow_back</i> {{ 'back' | translate }}
+  <i class="material-icons">arrow_back</i> {{ "back" | translate }}
 </button>
 
 <div class="cart-container">
   <div class="cart-header">
-    <h1 class="title">{{ 'your_cart' | translate }}</h1>
+    <h1 class="title">{{ "your_cart" | translate }}</h1>
     <div class="cart-header-info">
-      <p class="total-produtos">{{ 'total_products' | translate:{ quantity: getTotalQuantity() } }}</p>
-      <p class="value">{{ getTotalPrice() | currency:'BRL' }}</p>
+      <p class="total-produtos">
+        {{ "total_products" | translate : { quantity: getTotalQuantity() } }}
+      </p>
+      <p class="value">{{ getTotalPrice() | currency : "BRL" }}</p>
     </div>
   </div>
 
   <div class="cart-content">
     <div class="cart-items">
       <div class="cart-item" *ngFor="let item of products">
-        <img class="image" [src]="item.image_url" alt="{{ item.name }}">
+        <img class="image" [src]="item.image_url" alt="{{ item.name }}" />
         <div class="item-info">
           <div class="item-header">
             <h2>{{ item.name }}</h2>
@@ -28,40 +30,60 @@
           </div>
           <p class="description">{{ item.description }}</p>
           <div class="item-details">
-            <select>
-              <option *ngFor="let i of [].constructor(10); let index = index">
-                {{ index + 1 }}
-              </option>
-            </select>
-            <p class="price">{{ (item.price_in_cents / 100) | currency:'BRL' }}</p>
+            <div class="quantity-control">
+              <button
+                (click)="decreaseQuantity(item)"
+                [disabled]="item.quantity <= 1"
+              >
+                −
+              </button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="increaseQuantity(item)">+</button>
+            </div>
+            <p class="price">
+              {{
+                ((item.price_in_cents ?? 0) * (item.quantity ?? 0)) / 100
+                  | currency : "BRL"
+              }}
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cart-summary" [ngClass]="{'empty-cart': hasFewProducts}">
-      <h2>{{ 'order_summary' | translate }}</h2>
+    <div class="cart-summary" [ngClass]="{ 'empty-cart': hasFewProducts }">
+      <h2>{{ "order_summary" | translate }}</h2>
       <div class="summary-sub">
-        <p>{{ 'subtotal' | translate }}</p>
-        <p>{{ getTotalPrice() | currency:'BRL' }}</p>
+        <p>{{ "subtotal" | translate }}</p>
+        <p>{{ getTotalPrice() | currency : "BRL" }}</p>
       </div>
       <div class="summary-entrega">
-        <p>{{ 'delivery' | translate }}</p>
+        <p>{{ "delivery" | translate }}</p>
         <p>R$ 40,00</p>
       </div>
-      <hr class="divider">
+      <hr class="divider" />
       <div class="summary-total">
-        <p class="total">{{ 'total' | translate }}</p>
-        <p>{{ (getTotalPrice() + 40) | currency:'BRL' }}</p>
+        <p class="total">{{ "total" | translate }}</p>
+        <p>{{ getTotalPrice() + 40 | currency : "BRL" }}</p>
       </div>
 
-      <button class="add-purchase-button">{{ 'finish_purchase' | translate }}</button>
+      <button class="add-purchase-button">
+        {{ "finish_purchase" | translate }}
+      </button>
 
-      <div class="cart-info" [ngClass]="{'empty-info': hasFewProducts}">
-        <p><a href="#">{{ 'help' | translate }}</a></p>
-        <p><a href="#">{{ 'refunds' | translate }}</a></p>
-        <p><a href="#">{{ 'shipping' | translate }}</a></p>
-        <p><a href="#">{{ 'exchanges' | translate }}</a></p>
+      <div class="cart-info" [ngClass]="{ 'empty-info': hasFewProducts }">
+        <p>
+          <a href="#">{{ "help" | translate }}</a>
+        </p>
+        <p>
+          <a href="#">{{ "refunds" | translate }}</a>
+        </p>
+        <p>
+          <a href="#">{{ "shipping" | translate }}</a>
+        </p>
+        <p>
+          <a href="#">{{ "exchanges" | translate }}</a>
+        </p>
       </div>
     </div>
   </div>

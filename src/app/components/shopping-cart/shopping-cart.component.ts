@@ -7,7 +7,7 @@ import { Product } from 'src/app/models/product.interface';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
-  products: Product[] = [];
+  products: (Product & { quantity: number })[] = [];
   hasFewProducts: boolean = true;
 
   ngOnInit(): void {
@@ -17,19 +17,39 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getTotalQuantity(): number {
-    return this.products.length || 0;
+    return this.products.reduce((total, item) => total + item.quantity, 0);
   }
 
   getTotalPrice(): number {
     return this.products.reduce(
-      (total, item) => total + item.price_in_cents / 100,
+      (total, item) => total + (item.price_in_cents / 100) * item.quantity,
       0
     );
   }
 
-  removeItem(product: Product): void {
+  increaseQuantity(item: Product & { quantity: number }): void {
+    item.quantity += 1;
+    this.saveToLocalStorage();
+  }
+
+  decreaseQuantity(item: Product & { quantity: number }): void {
+    if (item.quantity > 1) {
+      item.quantity -= 1;
+    } else {
+      this.removeItem(item);
+      return;
+    }
+    this.saveToLocalStorage();
+  }
+
+  removeItem(product: Product & { quantity: number }): void {
     this.products = this.products.filter((p) => p.id !== product.id);
+    this.saveToLocalStorage();
+  }
+
+  saveToLocalStorage(): void {
     localStorage.setItem('selectedProducts', JSON.stringify(this.products));
+    this.updateCartStatus();
   }
 
   updateCartStatus(): boolean {

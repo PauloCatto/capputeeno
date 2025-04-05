@@ -36,7 +36,6 @@ export class HeaderComponent {
     const inputValue = (event.target as HTMLInputElement).value
       .trim()
       .toLowerCase();
-    console.log('Buscando por:', inputValue);
 
     if (inputValue.length < 2) {
       this.filteredProducts = [];
