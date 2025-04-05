@@ -22,11 +22,11 @@ export class CatalogComponent implements OnInit {
         if (data && data.length > 0) {
           this.processProducts(data);
         } else {
-          console.error('Nenhum produto encontrado.');
+          console.error('NO_PRODUCTS_FOUND');
         }
       })
       .catch((error) => {
-        console.error('Erro ao buscar produtos:', error);
+        console.error('ERROR_FETCHING_PRODUCTS', error);
       });
   }
 
@@ -42,9 +42,9 @@ export class CatalogComponent implements OnInit {
     const mugs = data.filter((product: { name: string; }) => product.name.toLowerCase().includes('caneca'));
 
     this.tabs = [
-      { label: 'Todos os Produtos', data: allProducts },
-      { label: 'Camisetas', data: tshirts },
-      { label: 'Canecas', data: mugs }
+      { label: 'ALL_PRODUCTS', data: allProducts },
+      { label: 'TSHIRTS', data: tshirts },
+      { label: 'MUGS', data: mugs }
     ];
   }
 

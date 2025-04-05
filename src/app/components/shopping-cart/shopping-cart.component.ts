@@ -4,7 +4,7 @@ import { Product } from 'src/app/models/product.interface';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.scss']
+  styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
   products: Product[] = [];
@@ -21,11 +21,14 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getTotalPrice(): number {
-    return this.products.reduce((total, item) => total + (item.price_in_cents / 100), 0);
+    return this.products.reduce(
+      (total, item) => total + item.price_in_cents / 100,
+      0
+    );
   }
 
   removeItem(product: Product): void {
-    this.products = this.products.filter(p => p.id !== product.id);
+    this.products = this.products.filter((p) => p.id !== product.id);
     localStorage.setItem('selectedProducts', JSON.stringify(this.products));
   }
 
@@ -33,5 +36,4 @@ export class ShoppingCartComponent implements OnInit {
     this.hasFewProducts = this.products.length <= 2;
     return this.hasFewProducts;
   }
-
 }

@@ -6,7 +6,7 @@
       [class.active]="selectedTab === i"
       (click)="selectTab(i)"
     >
-      {{ tab.label }}
+      {{ tab.label | translate }}
       <div class="underline" *ngIf="selectedTab === i"></div>
     </div>
   </div>

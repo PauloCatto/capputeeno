@@ -1,0 +1,17 @@
+
+<div class="credit-card-container" [class.flipped]="isFlipped">
+  <div class="card-front">
+    <div class="card-number">{{ cardNumber || '**** **** **** ****' }}</div>
+    <div class="card-holder">{{ cardHolder || 'NOME DO TITULAR' }}</div>
+    <div class="card-expiry">{{ cardExpiry || 'MM/AA' }}</div>
+  </div>
+  <div class="card-back">
+    <div class="cvv-box">{{ cvv || '***' }}</div>
+  </div>
+</div>
+
+<input maxlength="19" placeholder="Número do cartão" [(ngModel)]="cardNumber" (input)="onCardNumberChange()" />
+<input placeholder="Nome do titular" [(ngModel)]="cardHolder" />
+<input maxlength="5" placeholder="MM/AA" [(ngModel)]="cardExpiry" />
+<input maxlength="3" placeholder="CVV" [(ngModel)]="cvv" (focus)="flipCard(true)" (blur)="flipCard(false)" />
+

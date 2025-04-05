@@ -1,14 +1,16 @@
 <div class="content-header">
   <app-header></app-header>
 </div>
-<button class="back-button" [routerLink]="'/'">
-  <i class="material-icons">arrow_back</i> Voltar
+
+<button class="back-button" [routerLink]="'/product'">
+  <i class="material-icons">arrow_back</i> {{ 'back' | translate }}
 </button>
+
 <div class="cart-container">
   <div class="cart-header">
-    <h1 class="title">SEU CARRINHO</h1>
+    <h1 class="title">{{ 'your_cart' | translate }}</h1>
     <div class="cart-header-info">
-      <p class="total-produtos">Total ({{ getTotalQuantity() }} produtos)</p>
+      <p class="total-produtos">{{ 'total_products' | translate:{ quantity: getTotalQuantity() } }}</p>
       <p class="value">{{ getTotalPrice() | currency:'BRL' }}</p>
     </div>
   </div>
@@ -38,28 +40,28 @@
     </div>
 
     <div class="cart-summary" [ngClass]="{'empty-cart': hasFewProducts}">
-      <h2>RESUMO DO PEDIDO</h2>
+      <h2>{{ 'order_summary' | translate }}</h2>
       <div class="summary-sub">
-        <p>Subtotal de produtos</p>
-        <p> {{ getTotalPrice() | currency:'BRL' }}</p>
+        <p>{{ 'subtotal' | translate }}</p>
+        <p>{{ getTotalPrice() | currency:'BRL' }}</p>
       </div>
       <div class="summary-entrega">
-        <p>Entrega</p>
+        <p>{{ 'delivery' | translate }}</p>
         <p>R$ 40,00</p>
       </div>
       <hr class="divider">
       <div class="summary-total">
-        <p class="total">Total</p>
+        <p class="total">{{ 'total' | translate }}</p>
         <p>{{ (getTotalPrice() + 40) | currency:'BRL' }}</p>
       </div>
 
-      <button class="add-purchase-button">Finalizar Compra</button>
+      <button class="add-purchase-button">{{ 'finish_purchase' | translate }}</button>
 
       <div class="cart-info" [ngClass]="{'empty-info': hasFewProducts}">
-        <p><a href="#">Ajuda</a></p>
-        <p><a href="#">Reembolsos</a></p>
-        <p><a href="#">Entregas e frete</a></p>
-        <p><a href="#">Trocas e devoluções</a></p>
+        <p><a href="#">{{ 'help' | translate }}</a></p>
+        <p><a href="#">{{ 'refunds' | translate }}</a></p>
+        <p><a href="#">{{ 'shipping' | translate }}</a></p>
+        <p><a href="#">{{ 'exchanges' | translate }}</a></p>
       </div>
     </div>
   </div>

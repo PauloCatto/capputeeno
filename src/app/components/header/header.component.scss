@@ -7,12 +7,10 @@
 
   .title {
     padding-top: 10px;
-    font-family: 'Saira Stencil One';
+    font-family: "Saira Stencil One";
     font-weight: 400;
     font-size: 40px;
     line-height: 150%;
-    letter-spacing: 0%;
-    vertical-align: middle;
     color: #5d5d6d;
     cursor: pointer;
   }
@@ -24,45 +22,62 @@
     .search-container {
       position: relative;
       width: 100%;
+
+      input {
+        width: 100%;
+        padding: 10px 40px 10px 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f3f5f6;
+        outline: none;
+        color: #aaaaaa;
+        font-family: "Saira Stencil One";
+      }
+
+      i {
+        position: absolute;
+        top: 50%;
+        left: 270px;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #5d5d6d;
+      }
     }
 
-    .search-container input {
-      width: 100%;
-      padding: 10px 40px 10px 10px;
-      font-size: 16px;
-      border: 2px solid #ccc;
-      border-radius: 4px;
-      background-color: #f3f5f6;
-      outline: none;
-      color: #aaaaaa;
-      font-family: 'Saira Stencil One';
-    }
-
-    .search-container i {
-      position: absolute;
-      top: 50%;
-      left: 270px;
-      transform: translateY(-50%);
-      font-size: 20px;
-      color: #5d5d6d;
-    }
-
-    .shopping-container {
+    .shopping-inner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       position: relative;
-      display: inline-block;
+
+      a {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+
+        img:first-child {
+          position: relative;
+          top: 0;
+        }
+
+        .qtd-icon {
+          position: absolute;
+          top: -5px;
+          left: 12px;
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      button[mat-icon-button] {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin: 0;
+        width: 75px;
+      }
     }
 
-    .shopping-container img {
-      width: 25px;
-      position: absolute;
-    }
-
-    .qtd-icon {
-      position: absolute;
-      top: 15px;
-      width: 18px;
-      height: 18px;
-      left: 8px;
-    }
   }
 }
