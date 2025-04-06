@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -21,6 +22,7 @@ import { ProductComponent } from './components/product/product.component';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ConfirmDialogComponent } from './components/dialogs/confirm-dialog/confirm-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -34,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     ShoppingCartComponent,
     HeaderComponent,
-    CreditCardComponent
+    CreditCardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
     TranslateModule.forRoot({

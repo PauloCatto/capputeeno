@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { CatalogService } from 'src/app/services/catalog/catalog.service';
 
 @Component({
@@ -12,15 +13,21 @@ export class HeaderComponent {
   @Output() searchResults = new EventEmitter<Product[]>();
   filteredProducts: Product[] = [];
   showDropdown = false;
+  cartItemCount: number = 0;
 
   constructor(
     public catalogService: CatalogService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     const savedLang = localStorage.getItem('lang') || 'en';
     this.translate.use(savedLang);
+
+    this.cartService.totalQuantity$.subscribe(count => {
+      this.cartItemCount = count || 0;
+    });
   }
 
   toggleDropdown() {

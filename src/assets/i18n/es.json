@@ -25,5 +25,9 @@
   "TSHIRT_FILTER": "camiseta",
   "MUG_FILTER": "taza",
   "NO_PRODUCT_IN_STORAGE": "Ningún producto encontrado en el almacenamiento local.",
-  "PRODUCT_ADDED_SUCCESS": "¡Producto agregado con éxito!"
+  "PRODUCT_ADDED_SUCCESS": "¡Producto agregado con éxito!",
+  "delete_confirmation_title": "Confirmación",
+  "delete_confirmation_message": "¿Está seguro de que desea eliminar este artículo del carrito?",
+  "cancel_button": "Cancelar",
+  "delete_button": "Eliminar"
 }

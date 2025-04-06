@@ -2,7 +2,10 @@
   <app-header></app-header>
 </div>
 
-<button class="back-button" [routerLink]="'/product'">
+<button
+  class="back-button"
+  [routerLink]="products.length > 0 ? '/product' : '/home'"
+>
   <i class="material-icons">arrow_back</i> {{ "back" | translate }}
 </button>
 
@@ -11,9 +14,9 @@
     <h1 class="title">{{ "your_cart" | translate }}</h1>
     <div class="cart-header-info">
       <p class="total-produtos">
-        {{ "total_products" | translate : { quantity: getTotalQuantity() } }}
+        {{ "total_products" | translate : { quantity: totalQuantity } }}
       </p>
-      <p class="value">{{ getTotalPrice() | currency : "BRL" }}</p>
+      <p class="value">{{ totalPrice | currency : "BRL" }}</p>
     </div>
   </div>
 
@@ -55,7 +58,7 @@
       <h2>{{ "order_summary" | translate }}</h2>
       <div class="summary-sub">
         <p>{{ "subtotal" | translate }}</p>
-        <p>{{ getTotalPrice() | currency : "BRL" }}</p>
+        <p>{{ totalPrice | currency : "BRL" }}</p>
       </div>
       <div class="summary-entrega">
         <p>{{ "delivery" | translate }}</p>
@@ -64,7 +67,13 @@
       <hr class="divider" />
       <div class="summary-total">
         <p class="total">{{ "total" | translate }}</p>
-        <p>{{ getTotalPrice() + 40 | currency : "BRL" }}</p>
+        <p>
+          {{
+            totalPrice > 0
+              ? (totalPrice + 40 | currency : "BRL")
+              : (0 | currency : "BRL")
+          }}
+        </p>
       </div>
 
       <button class="add-purchase-button">

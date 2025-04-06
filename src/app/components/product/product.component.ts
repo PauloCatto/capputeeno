@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private router: Router,
     @Inject(ToastService) public toast: ToastService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class ProductComponent implements OnInit {
     }
 
     localStorage.setItem('selectedProducts', JSON.stringify(cart));
+    this.cartService.updateCart(cart);
 
     setTimeout(() => {
       this.loading = false;

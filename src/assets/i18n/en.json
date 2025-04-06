@@ -25,5 +25,9 @@
   "TSHIRT_FILTER": "t-shirt",
   "MUG_FILTER": "mug",
   "NO_PRODUCT_IN_STORAGE": "No product found in localStorage.",
-  "PRODUCT_ADDED_SUCCESS": "Product added successfully!"
+  "PRODUCT_ADDED_SUCCESS": "Product added successfully!",
+  "delete_confirmation_title": "Confirmation",
+  "delete_confirmation_message": "Are you sure you want to remove this item from the cart?",
+  "cancel_button": "Cancel",
+  "delete_button": "Delete"
 }

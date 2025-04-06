@@ -25,5 +25,9 @@
   "TSHIRT_FILTER": "camiseta",
   "MUG_FILTER": "caneca",
   "NO_PRODUCT_IN_STORAGE": "Nenhum produto encontrado no localStorage.",
-  "PRODUCT_ADDED_SUCCESS": "Produto adicionado com sucesso!"
+  "PRODUCT_ADDED_SUCCESS": "Produto adicionado com sucesso!",
+  "delete_confirmation_title": "Confirmação",
+  "delete_confirmation_message": "Tem certeza que deseja remover este item do carrinho?",
+  "cancel_button": "Cancelar",
+  "delete_button": "Excluir"
 }

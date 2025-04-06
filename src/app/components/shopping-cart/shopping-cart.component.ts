@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/models/product.interface';
+import { CartService } from 'src/app/services/cart/cart.service';
+import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,41 +14,29 @@ export class ShoppingCartComponent implements OnInit {
   products: (Product & { quantity: number })[] = [];
   hasFewProducts: boolean = true;
 
-  constructor(){}
+  constructor(
+    private cartService: CartService,
+    private dialog: MatDialog,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
-    const storedProducts = localStorage.getItem('selectedProducts');
-    const parsedProducts: (Product & { quantity?: number })[] = storedProducts
-      ? JSON.parse(storedProducts)
-      : [];
-
-    this.products = parsedProducts.map((item) => ({
-      ...item,
-      quantity: item.quantity ?? 1,
-    }));
-
+    this.products = this.cartService.getProducts();
     this.updateCartStatus();
   }
 
-  getTotalQuantity(): number {
-    return this.products.reduce(
-      (total, item) => total + (item.quantity ?? 0),
-      0
-    );
+  get totalQuantity(): number {
+    return this.cartService.getTotalQuantity();
   }
 
-  getTotalPrice(): number {
-    return this.products.reduce(
-      (total, item) =>
-        total +
-        (((item.price_in_cents ?? 0) * (item.quantity ?? 0)) / 100),
-      0
-    );
+  get totalPrice(): number {
+    return this.cartService.getTotalPrice();
   }
 
   increaseQuantity(item: Product & { quantity: number }): void {
     item.quantity += 1;
-    this.saveToLocalStorage();
+    this.cartService.updateCart(this.products);
+    this.updateCartStatus();
   }
 
   decreaseQuantity(item: Product & { quantity: number }): void {
@@ -54,21 +46,28 @@ export class ShoppingCartComponent implements OnInit {
       this.removeItem(item);
       return;
     }
-    this.saveToLocalStorage();
-  }
-
-  removeItem(product: Product & { quantity: number }): void {
-    this.products = this.products.filter((p) => p.id !== product.id);
-    this.saveToLocalStorage();
-  }
-
-  saveToLocalStorage(): void {
-    localStorage.setItem('selectedProducts', JSON.stringify(this.products));
+    this.cartService.updateCart(this.products);
     this.updateCartStatus();
   }
 
-  updateCartStatus(): boolean {
+  removeItem(product: Product & { quantity: number }): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: {
+        message: this.translate.instant('delete_confirmation_message'),
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.products = this.products.filter((p) => p.id !== product.id);
+        this.cartService.updateCart(this.products);
+        this.updateCartStatus();
+      }
+    });
+  }
+
+  updateCartStatus(): void {
     this.hasFewProducts = this.products.length <= 2;
-    return this.hasFewProducts;
   }
 }
