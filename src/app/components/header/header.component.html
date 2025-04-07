@@ -16,8 +16,8 @@
 
       <div class="scrolling-banner" *ngIf="router.url !== '/'">
         <div class="scrolling-text">
-          💳 {{ "installments_text" | translate }} &nbsp;&nbsp;&nbsp;
-          🚚 {{ "fast_shipping_text" | translate }}
+          💳 {{ "installments_text" | translate }} &nbsp;&nbsp;&nbsp; 🚚
+          {{ "fast_shipping_text" | translate }}
         </div>
       </div>
 
@@ -33,10 +33,15 @@
             </span>
           </a>
 
-          <button mat-icon-button [matMenuTriggerFor]="languageMenu">
-            <mat-icon>language</mat-icon>
-            <mat-icon>arrow_drop_down</mat-icon>
-          </button>
+          <div class="language-container">
+            <button mat-icon-button [matMenuTriggerFor]="languageMenu">
+              <mat-icon>language</mat-icon>
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+            <span class="language-text">
+              {{ currentLang | uppercase }}
+            </span>
+          </div>
 
           <mat-menu #languageMenu="matMenu">
             <button mat-menu-item (click)="switchLanguage('en')">

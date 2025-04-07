@@ -165,6 +165,16 @@
   }
 }
 
+.language-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .language-text {
+    margin-bottom: 5px;
+  }
+}
+
 .scrolling-banner {
   overflow: hidden;
   white-space: nowrap;

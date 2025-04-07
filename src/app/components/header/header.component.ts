@@ -15,6 +15,7 @@ export class HeaderComponent {
   filteredProducts: Product[] = [];
   showDropdown = false;
   cartItemCount: number = 0;
+  currentLang: string = '';
 
   constructor(
     public catalogService: CatalogService,
@@ -24,6 +25,7 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit(): void {
+    this.currentLang = this.translate.currentLang || this.translate.getDefaultLang();
     const savedLang = localStorage.getItem('lang') || 'en';
     this.translate.use(savedLang);
 
@@ -39,6 +41,7 @@ export class HeaderComponent {
   switchLanguage(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
+    this.currentLang = lang;
   }
 
   onSearch(event: Event) {
