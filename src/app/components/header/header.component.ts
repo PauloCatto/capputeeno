@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart/cart.service';
@@ -18,7 +19,8 @@ export class HeaderComponent {
   constructor(
     public catalogService: CatalogService,
     private translate: TranslateService,
-    private cartService: CartService
+    private cartService: CartService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {

@@ -29,5 +29,7 @@
   "delete_confirmation_title": "Confirmación",
   "delete_confirmation_message": "¿Está seguro de que desea eliminar este artículo del carrito?",
   "cancel_button": "Cancelar",
-  "delete_button": "Eliminar"
+  "delete_button": "Eliminar",
+  "installments_text": "3x sin interés",
+  "fast_shipping_text": "Entrega rápida"
 }

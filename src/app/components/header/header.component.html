@@ -5,7 +5,7 @@
     </div>
 
     <div class="header-container">
-      <div class="search-container">
+      <div class="search-container" *ngIf="router.url === '/'">
         <input
           type="text"
           [placeholder]="'search_placeholder' | translate"
@@ -14,10 +14,20 @@
         <i class="material-icons">search</i>
       </div>
 
+      <div class="scrolling-banner" *ngIf="router.url !== '/'">
+        <div class="scrolling-text">
+          💳 {{ "installments_text" | translate }} &nbsp;&nbsp;&nbsp;
+          🚚 {{ "fast_shipping_text" | translate }}
+        </div>
+      </div>
+
       <div class="shopping-container">
         <div class="shopping-inner">
           <a routerLink="/shopping-cart">
-            <img src="../../../assets/svgs/shopping-bag.svg" alt="Shopping Bag" />
+            <img
+              src="../../../assets/svgs/shopping-bag.svg"
+              alt="Shopping Bag"
+            />
             <span class="qtd-icon">
               {{ cartItemCount }}
             </span>
@@ -29,13 +39,18 @@
           </button>
 
           <mat-menu #languageMenu="matMenu">
-            <button mat-menu-item (click)="switchLanguage('en')">English</button>
-            <button mat-menu-item (click)="switchLanguage('pt')">Português</button>
-            <button mat-menu-item (click)="switchLanguage('es')">Español</button>
+            <button mat-menu-item (click)="switchLanguage('en')">
+              English
+            </button>
+            <button mat-menu-item (click)="switchLanguage('pt')">
+              Português
+            </button>
+            <button mat-menu-item (click)="switchLanguage('es')">
+              Español
+            </button>
           </mat-menu>
         </div>
       </div>
-
     </div>
   </div>
 </section>
