@@ -9,4 +9,5 @@ export interface Product {
 export interface Tab {
   label: string;
   data: Product[];
+  dataToShow?: Product[];
 }

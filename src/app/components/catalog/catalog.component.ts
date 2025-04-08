@@ -15,6 +15,7 @@ export class CatalogComponent implements OnInit {
   tabs: Tab[] = [];
   selectedTab = 0;
   loading!: boolean;
+  itemsPerPage = 10;
 
   constructor(
     private catalogService: CatalogService,
@@ -28,6 +29,7 @@ export class CatalogComponent implements OnInit {
       .then((data: Product[]) => {
         if (data && data.length > 0) {
           this.processProducts(data);
+          this.onItemsPerPageChange(this.itemsPerPage);
         } else {
           console.error(this.translate.instant('NO_PRODUCTS_FOUND'));
         }
@@ -35,6 +37,20 @@ export class CatalogComponent implements OnInit {
       .catch((error) => {
         console.error(this.translate.instant('ERROR_FETCHING_PRODUCTS', error));
       });
+  }
+
+  changeItemsPerPage(step: number) {
+    const newValue = this.itemsPerPage + step;
+    if (newValue >= 10 && newValue <= 60) {
+      this.itemsPerPage = newValue;
+      this.onItemsPerPageChange(newValue);
+    }
+  }
+  onItemsPerPageChange(value: number) {
+    this.tabs = this.tabs.map((tab) => ({
+      ...tab,
+      dataToShow: tab.data.slice(0, value),
+    }));
   }
 
   selectTab(index: number) {
@@ -53,9 +69,21 @@ export class CatalogComponent implements OnInit {
     );
 
     this.tabs = [
-      { label: 'ALL_PRODUCTS', data: allProducts },
-      { label: 'TSHIRTS', data: tshirts },
-      { label: 'MUGS', data: mugs },
+      {
+        label: 'ALL_PRODUCTS',
+        data: allProducts,
+        dataToShow: allProducts.slice(0, this.itemsPerPage),
+      },
+      {
+        label: 'TSHIRTS',
+        data: tshirts,
+        dataToShow: tshirts.slice(0, this.itemsPerPage),
+      },
+      {
+        label: 'MUGS',
+        data: mugs,
+        dataToShow: mugs.slice(0, this.itemsPerPage),
+      },
     ];
   }
 
@@ -66,6 +94,6 @@ export class CatalogComponent implements OnInit {
     setTimeout(() => {
       this.loading = false;
       this.router.navigate(['/product']);
-    }, 2000)
+    }, 2000);
   }
 }

@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,11 +14,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class ShoppingCartComponent implements OnInit {
   products: (Product & { quantity: number })[] = [];
   hasFewProducts: boolean = true;
+  loading: boolean = false;
 
   constructor(
     private cartService: CartService,
     private dialog: MatDialog,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,5 +72,15 @@ export class ShoppingCartComponent implements OnInit {
 
   updateCartStatus(): void {
     this.hasFewProducts = this.products.length <= 2;
+  }
+
+  finishPurchase(): void {
+    this.loading = true;
+    this.cartService.setPurchasedItems(this.products);
+
+    setTimeout(() => {
+      this.loading = false;
+      this.router.navigate(['/credit-card']);
+    }, 2000);
   }
 }

@@ -31,5 +31,6 @@
   "cancel_button": "Cancel",
   "delete_button": "Delete",
   "installments_text": "3x no interest",
-  "fast_shipping_text": "Fast delivery"
+  "fast_shipping_text": "Fast delivery",
+  "QUANTITY_PER_PAGE": "Items per page"
 }

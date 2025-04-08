@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -43,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
     MatMenuModule,
@@ -50,7 +56,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatDialogModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatSnackBarModule,
+    MatSelectModule,
     TranslateModule.forRoot({
       defaultLanguage: 'pt',
       loader: {

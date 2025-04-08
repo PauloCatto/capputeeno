@@ -1,12 +1,40 @@
+.checkout-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+  padding: 0px;
+  flex-wrap: wrap;
+  background: linear-gradient(120deg, #f0f2f5, #e0eafc);
+  animation: backgroundFade 10s ease infinite alternate;
+  min-height: 100vh;
+}
+
+@keyframes backgroundFade {
+  0% {
+    background: linear-gradient(120deg, #f0f2f5, #e0eafc);
+  }
+  100% {
+    background: linear-gradient(120deg, #dfe9f3, #ffffff);
+  }
+}
+
+.card-preview {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .credit-card-container {
   width: 340px;
   height: 200px;
   perspective: 1000px;
-  margin-bottom: 20px;
+  position: relative;
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, #434343, #000000);
@@ -17,10 +45,12 @@
   backface-visibility: hidden;
   position: absolute;
   transition: transform 0.6s;
+  font-family: "Courier New", monospace;
 }
 
 .card-front {
   z-index: 2;
+  transform: rotateY(0deg);
 }
 
 .card-back {
@@ -35,9 +65,126 @@
   transform: rotateY(360deg);
 }
 
-.card-number, .card-holder, .card-expiry, .cvv-box {
-  font-family: monospace;
-  font-size: 16px;
-  margin-bottom: 10px;
+.card-chip {
+  width: 50px;
+  height: 35px;
+  background: gold;
+  border-radius: 6px;
+  margin-bottom: 20px;
 }
 
+.card-number {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-holder,
+.card-expiry,
+.cvv-box {
+  font-size: 14px;
+}
+
+.stripe {
+  width: 100%;
+  height: 40px;
+  background: #000;
+  margin-bottom: 30px;
+}
+
+.payment-form {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: 115px;
+  gap: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+  position: relative;
+  border: 2px solid #007bff;
+  animation: borderPulse 2s infinite;
+  align-self: center;
+
+  .form-section {
+    flex: 1 1 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border 0.2s ease;
+
+    &:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px #007bff66;
+    }
+  }
+
+  .pay-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  }
+}
+
+select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.2s ease;
+  background-color: #fff;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff66;
+  }
+}
+
+.total-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #333;
+}

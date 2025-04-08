@@ -11,6 +11,11 @@ export class CartService {
   private totalQuantitySubject = new BehaviorSubject<number>(0);
   totalQuantity$ = this.totalQuantitySubject.asObservable();
 
+  private purchasedItemsSubject = new BehaviorSubject<
+    (Product & { quantity: number })[]
+  >([]);
+  purchasedItems$ = this.purchasedItemsSubject.asObservable();
+
   constructor() {
     const stored = localStorage.getItem('selectedProducts');
     this.products = stored ? JSON.parse(stored) : [];
@@ -33,8 +38,12 @@ export class CartService {
     );
   }
 
+  setPurchasedItems(items: (Product & { quantity: number })[]): void {
+    this.purchasedItemsSubject.next(items);
+  }
+
   addProduct(product: Product): void {
-    const existing = this.products.find(p => p.id === product.id);
+    const existing = this.products.find((p) => p.id === product.id);
     if (existing) {
       existing.quantity += 1;
     } else {
