@@ -1,61 +1,64 @@
-<div>
-  <app-header></app-header>
-</div>
-
+<app-header></app-header>
 <div class="checkout-container">
   <div class="card-preview">
-    <div class="credit-card-container" [class.flipped]="isFlipped">
-      <div class="card-front">
-        <div class="card-chip"></div>
-        <div class="card-number">{{ cardForm.get('number')?.value || '**** **** **** ****' }}</div>
-        <div class="card-footer">
-          <div class="card-holder">{{ cardForm.get('holder')?.value || 'NOME DO TITULAR' }}</div>
-          <div class="card-expiry">{{ cardForm.get('expiry')?.value || 'MM/AA' }}</div>
-        </div>
-      </div>
-      <div class="card-back">
-        <div class="stripe"></div>
-        <div class="cvv-box">{{ cardForm.get('cvv')?.value || '***' }}</div>
-      </div>
+    <div class="card-chip"></div>
+    <div class="card-number">{{ checkoutForm.value.number || '**** **** **** ****' }}</div>
+    <div class="card-footer">
+      <div class="card-holder">{{ checkoutForm.value.holder || ('HOLDER_NAME' | translate) }}</div>
+      <div class="card-expiry">{{ checkoutForm.value.expiry || 'MM/AA' }}</div>
     </div>
   </div>
 
-  <form [formGroup]="checkoutForm" class="payment-form" (ngSubmit)="submit()">
-    <div class="form-section">
-      <h2>Forma de Pagamento</h2>
-      <select formControlName="paymentMethod" (change)="onPaymentMethodChange()">
-        <option value="pix">PIX</option>
-        <option value="debit">Débito</option>
-        <option value="credit">Crédito</option>
-      </select>
+  <form [formGroup]="checkoutForm" (ngSubmit)="submit()" class="payment-form">
+    <h2>{{ 'PAYMENT' | translate }}</h2>
 
-      <div *ngIf="selectedPaymentMethod === 'credit'">
-        <label for="installments">Parcelamento</label>
-        <select formControlName="installments">
-          <option *ngFor="let i of installments" [value]="i">{{ i }}x de {{ getInstallmentValue(i) | currency:'BRL' }}</option>
+    <div class="form-group">
+      <div class="form-group-column">
+        <label for="holder">{{ 'HOLDER_LABEL' | translate }}</label>
+        <input id="holder" formControlName="holder" [placeholder]="'HOLDER_PLACEHOLDER' | translate" />
+      </div>
+      <div class="form-group-column">
+        <label for="number">{{ 'NUMBER_LABEL' | translate }}</label>
+        <input
+          id="number"
+          formControlName="number"
+          [placeholder]="'NUMBER_PLACEHOLDER' | translate"
+          (input)="onCardNumberChange()" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-group-column">
+        <label for="expiry">{{ 'EXPIRY_LABEL' | translate }}</label>
+        <input id="expiry" formControlName="expiry" placeholder="MM/AA" />
+      </div>
+      <div class="form-group-column">
+        <label for="cvv">{{ 'CVV_LABEL' | translate }}</label>
+        <input id="cvv" formControlName="cvv" placeholder="123" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-group-column">
+        <label>{{ 'METHOD_LABEL' | translate }}</label>
+        <select formControlName="paymentMethod" (change)="onPaymentMethodChange()">
+          <option value="credit">{{ 'CREDIT_OPTION' | translate }}</option>
+          <option value="debit">{{ 'DEBIT_OPTION' | translate }}</option>
         </select>
       </div>
 
-      <p class="total-price">Total: {{ totalAmount | currency:'BRL' }}</p>
+      <div class="form-group-column" *ngIf="selectedPaymentMethod === 'credit'">
+        <label>{{ 'INSTALLMENTS_LABEL' | translate }}</label>
+        <select formControlName="installments">
+          <option *ngFor="let i of installments" [value]="i">
+            {{ i }}x {{ 'INSTALLMENT_OF' | translate }} {{ getInstallmentValue(i) | currency:'BRL' }}
+          </option>
+        </select>
+      </div>
     </div>
 
-    <div class="form-section">
-      <h2>Informações do Cartão</h2>
-      <input formControlName="number" maxlength="19" placeholder="Número do cartão" (input)="onCardNumberChange()" />
-      <input formControlName="holder" placeholder="Nome do titular" />
-      <input formControlName="expiry" maxlength="5" placeholder="MM/AA" />
-      <input formControlName="cvv" maxlength="3" placeholder="CVV" (focus)="flipCard(true)" (blur)="flipCard(false)" />
-    </div>
+    <div class="total-price">{{ 'TOTAL' | translate }}: {{ totalAmount | currency:'BRL' }}</div>
 
-    <div class="form-section">
-      <h2>Informações do Cliente</h2>
-      <input formControlName="name" placeholder="Nome completo" />
-      <input formControlName="email" type="email" placeholder="Email" />
-      <input formControlName="address" placeholder="Endereço" />
-      <input formControlName="city" placeholder="Cidade" />
-      <input formControlName="zip" placeholder="CEP" />
-    </div>
-
-    <button type="submit" class="pay-button">Finalizar Pagamento</button>
+    <button type="submit" class="pay-button">{{ 'PAY_BUTTON' | translate }}</button>
   </form>
 </div>

@@ -49,7 +49,7 @@
             </div>
             <p class="price">
               {{
-                ((item.price_in_cents ?? 0) * (item.quantity ?? 0)) / 100
+                (item.price_in_cents * item.quantity) / 100
                   | currency : "BRL"
               }}
             </p>

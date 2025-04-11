@@ -1,47 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CartService } from 'src/app/services/cart/cart.service';
 
 @Component({
   selector: 'app-credit-card',
   templateUrl: './credit-card.component.html',
-  styleUrls: ['./credit-card.component.scss']
+  styleUrls: ['./credit-card.component.scss'],
 })
 export class CreditCardComponent implements OnInit {
   checkoutForm!: FormGroup;
-  isFlipped = false;
-  selectedPaymentMethod = 'pix';
-  totalAmount = 1000; // valor total fictício, pode vir da API
+  selectedPaymentMethod: string = 'credit';
+  totalAmount: number = 0;
   installments = Array.from({ length: 10 }, (_, i) => i + 1);
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.checkoutForm = this.fb.group({
-      number: [''],
-      holder: [''],
-      expiry: [''],
-      cvv: [''],
-      name: [''],
-      email: [''],
-      address: [''],
-      city: [''],
-      zip: [''],
-      paymentMethod: ['pix'],
-      installments: [1]
-    });
-  }
+    this.totalAmount = this.cartService.getTotalPrice();
 
-  get cardForm() {
-    return this.checkoutForm;
+    this.checkoutForm = this.fb.group({
+      holder: ['', Validators.required],
+      number: [
+        '',
+        [Validators.required, Validators.pattern(/^\d{4} \d{4} \d{4} \d{4}$/)],
+      ],
+      expiry: ['', Validators.required, Validators.pattern(/^\d{4}$/)
+      ],
+      cvv: ['', [Validators.required, Validators.pattern(/^\d{3}$/)]],
+      paymentMethod: ['credit'],
+      installments: [1],
+    });
+
+    this.selectedPaymentMethod = this.checkoutForm.get('paymentMethod')?.value;
   }
 
   onCardNumberChange(): void {
-    const value = this.checkoutForm.get('number')?.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
-    this.checkoutForm.patchValue({ number: value });
-  }
-
-  flipCard(flip: boolean): void {
-    this.isFlipped = flip;
+    const rawValue = this.checkoutForm.get('number')?.value.replace(/\D/g, '');
+    const formatted = rawValue.replace(/(.{4})/g, '$1 ').trim();
+    this.checkoutForm.patchValue({ number: formatted }, { emitEvent: false });
   }
 
   onPaymentMethodChange(): void {
@@ -57,7 +53,10 @@ export class CreditCardComponent implements OnInit {
 
   submit(): void {
     if (this.checkoutForm.valid) {
-      console.log('Dados enviados:', this.checkoutForm.value);
+      console.log('✅ Pagamento enviado:', this.checkoutForm.value);
+    } else {
+      console.warn('❌ Formulário inválido!');
+      this.checkoutForm.markAllAsTouched();
     }
   }
 }
