@@ -1,5 +1,5 @@
 .content-header {
-  height: 65px !important;
+  margin-top: 20px;
 }
 
 .product-container {
@@ -9,38 +9,20 @@
   position: relative;
 }
 
-.back-button {
-  position: absolute;
-  top: 10px;
-  left: 110px;
-  font-family: Saira;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: #617480;
-}
-
-.back-button i {
-  font-size: 24px;
-  margin-right: 5px;
-}
-
 .product-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 40px;
-  margin-left: 70px
+  margin-left: 70px;
 }
 
 .product-image img {
   object-fit: cover;
   border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-info {
@@ -53,9 +35,6 @@
   font-family: Saira;
   font-weight: 400;
   font-size: 18px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   color: #41414d;
 }
 
@@ -63,9 +42,6 @@
   font-family: Saira;
   font-weight: 300;
   font-size: 32px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   color: #41414d;
 }
 
@@ -73,9 +49,6 @@
   font-family: Saira;
   font-weight: 600;
   font-size: 20px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   color: #09090a;
 }
 
@@ -83,20 +56,13 @@
   font-family: Saira;
   font-weight: 400;
   font-size: 12px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   color: #41414d;
-  margin-bottom: 50px;
 }
 
 .description-label {
   font-family: Saira;
   font-weight: 500;
   font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   text-transform: uppercase;
   color: #737380;
 }
@@ -105,9 +71,6 @@
   font-family: Saira;
   font-weight: 400;
   font-size: 14px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
   color: #41414d;
   height: 60px;
   overflow: hidden;
@@ -122,19 +85,77 @@
   color: white;
   font-size: 18px;
   padding: 15px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   gap: 10px;
-  margin-top: 160px
-}
-
-.add-to-cart i {
-  font-size: 24px;
 }
 
 .add-to-cart:hover {
   background-color: #0e4a6f;
 }
 
+.back-button {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: Saira;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #617480;
+}
+
+.back-button i {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+
+  .product-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .back-button {
+    font-size: 12px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-container {
+    padding: 40px;
+  }
+
+  .product-info {
+    align-items: center;
+  }
+
+  .product-image img {
+    max-width: 80%;
+  }
+
+  .back-button {
+    background: none;
+    font-size: 12px;
+    left: 10px;
+    padding: 5px;
+  }
+
+  .add-to-cart {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
