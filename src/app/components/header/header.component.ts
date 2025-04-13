@@ -58,6 +58,7 @@ export class HeaderComponent {
 
     if (!value || value.length < 2) {
       this.filteredProducts = [];
+      this.searchResults.emit(this.filteredProducts);
       return;
     }
 

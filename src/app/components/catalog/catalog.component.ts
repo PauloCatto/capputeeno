@@ -39,25 +39,26 @@ export class CatalogComponent implements OnInit {
       });
   }
 
-  changeItemsPerPage(step: number) {
+  changeItemsPerPage(step: number): void {
     const newValue = this.itemsPerPage + step;
     if (newValue >= 10 && newValue <= 60) {
       this.itemsPerPage = newValue;
       this.onItemsPerPageChange(newValue);
     }
   }
-  onItemsPerPageChange(value: number) {
+
+  onItemsPerPageChange(value: number): void {
     this.tabs = this.tabs.map((tab) => ({
       ...tab,
       dataToShow: tab.data.slice(0, value),
     }));
   }
 
-  selectTab(index: number) {
+  selectTab(index: number): void {
     this.selectedTab = index;
   }
 
-  processProducts(data: Product[]) {
+  processProducts(data: Product[]): void {
     this.products = data;
     const allProducts = data;
 
@@ -87,7 +88,7 @@ export class CatalogComponent implements OnInit {
     ];
   }
 
-  onProductClick(product: Product) {
+  onProductClick(product: Product): void {
     this.loading = true;
     localStorage.setItem('selectedProduct', JSON.stringify(product));
 

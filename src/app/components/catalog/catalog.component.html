@@ -2,6 +2,60 @@
   <mat-spinner diameter="50"></mat-spinner>
 </div>
 
+<!-- Exibição para produtos filtrados -->
+<section class="container" *ngIf="filtered.length > 0">
+  <div class="header-bar">
+    <div class="custom-tab-group">
+      <div
+        class="custom-tab"
+        *ngFor="let tab of tabs; let i = index"
+        [class.active]="selectedTab === i"
+        (click)="selectTab(i)"
+      >
+        {{ tab.label | translate }}
+        <div class="underline" *ngIf="selectedTab === i"></div>
+      </div>
+    </div>
+    <div class="items-per-page-wrapper">
+      <label class="label">{{ "QUANTITY_PER_PAGE" | translate }}</label>
+      <div class="controls">
+        <button
+          (click)="changeItemsPerPage(-10)"
+          [disabled]="itemsPerPage <= 10"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <span class="value">{{ itemsPerPage }}</span>
+        <button
+          (click)="changeItemsPerPage(10)"
+          [disabled]="itemsPerPage >= 60"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exibindo os itens filtrados -->
+  <div class="content">
+    <div class="product-grid">
+      <div
+        *ngFor="let item of filtered"
+        class="product-card"
+        (click)="onProductClick(item)"
+      >
+        <img [src]="item.image_url" alt="{{ item.name | translate }}" />
+        <h3 class="name">{{ item.name | translate }}</h3>
+        <p class="divider"></p>
+        <p class="price">
+          {{ item.price_in_cents / 100 | currency: 'BRL':'symbol':'1.2-2' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Exibição para produtos por abas (canecas, camisetas, etc) -->
 <section class="container" *ngIf="filtered.length === 0">
   <div class="header-bar">
     <div class="custom-tab-group">
@@ -38,6 +92,7 @@
     </div>
   </div>
 
+  <!-- Exibindo os itens das abas (todos, camisetas, canecas) -->
   <div class="content">
     <div class="product-grid">
       <div
@@ -49,9 +104,7 @@
         <h3 class="name">{{ item.name | translate }}</h3>
         <p class="divider"></p>
         <p class="price">
-          {{
-            item.price_in_cents / 100 | currency : "BRL" : "symbol" : "1.2-2"
-          }}
+          {{ item.price_in_cents / 100 | currency:'BRL':'symbol':'1.2-2' }}
         </p>
       </div>
     </div>
