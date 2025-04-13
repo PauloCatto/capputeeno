@@ -80,7 +80,6 @@ export class ShoppingCartComponent implements OnInit {
 
     setTimeout(() => {
       this.loading = false;
-      this.router.navigate(['/credit-card']);
     }, 2000);
   }
 }

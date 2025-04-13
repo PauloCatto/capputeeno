@@ -12,16 +12,8 @@
             matInput
             [placeholder]="'search_placeholder' | translate"
             [formControl]="searchControl"
-            [matAutocomplete]="auto"
           />
-
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let product of filteredProducts" [value]="product.name">
-              {{ product.name }}
-            </mat-option>
-          </mat-autocomplete>
         </mat-form-field>
-
 
         <i class="material-icons">search</i>
       </div>

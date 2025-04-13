@@ -14,7 +14,7 @@ export class CartService {
   private purchasedItemsSubject = new BehaviorSubject<
     (Product & { quantity: number })[]
   >([]);
-  purchasedItems$ = this.purchasedItemsSubject.asObservable();
+  protected purchasedItems$ = this.purchasedItemsSubject.asObservable();
 
   constructor() {
     const stored = localStorage.getItem('selectedProducts');

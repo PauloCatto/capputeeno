@@ -22,7 +22,6 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { ProductComponent } from './components/product/product.component';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -41,7 +40,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     ShoppingCartComponent,
     HeaderComponent,
-    CreditCardComponent,
     ConfirmDialogComponent
   ],
   imports: [
