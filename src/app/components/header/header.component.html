@@ -6,16 +6,17 @@
 
     <div class="header-container">
       <div class="search-container" *ngIf="router.url === '/'">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="search-field">
           <input
             class="search-input"
             matInput
             [placeholder]="'search_placeholder' | translate"
             [formControl]="searchControl"
           />
+          <button mat-icon-button class="search-icon">
+            <mat-icon>search</mat-icon>
+          </button>
         </mat-form-field>
-
-        <i class="material-icons">search</i>
       </div>
 
       <div class="scrolling-banner" *ngIf="router.url !== '/'">
