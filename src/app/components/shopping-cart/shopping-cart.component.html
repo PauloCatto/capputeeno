@@ -6,15 +6,14 @@
   <mat-spinner diameter="50"></mat-spinner>
 </div>
 
-<button
-  class="back-button"
-  [routerLink]="products.length > 0 ? '/product' : '/home'"
->
-  <i class="material-icons">arrow_back</i> {{ "back" | translate }}
-</button>
-
 <div class="cart-container">
   <div class="cart-header">
+    <button
+      class="back-button"
+      [routerLink]="products.length > 0 ? '/product' : '/home'"
+    >
+      <i class="material-icons">arrow_back</i> {{ "back" | translate }}
+    </button>
     <h1 class="title">{{ "your_cart" | translate }}</h1>
     <div class="cart-header-info">
       <p class="total-produtos">
