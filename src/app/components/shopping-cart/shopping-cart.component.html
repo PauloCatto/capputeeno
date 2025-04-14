@@ -48,8 +48,7 @@
             </div>
             <p class="price">
               {{
-                (item.price_in_cents * item.quantity) / 100
-                  | currency : "BRL"
+                (item.price_in_cents * item.quantity) / 100 | currency : "BRL"
               }}
             </p>
           </div>
@@ -63,7 +62,7 @@
         <p>{{ "subtotal" | translate }}</p>
         <p>{{ totalPrice | currency : "BRL" }}</p>
       </div>
-      <div class="summary-entrega">
+      <div class="summary-entrega" *ngIf="totalPrice < 900">
         <p>{{ "delivery" | translate }}</p>
         <p>R$ 40,00</p>
       </div>
@@ -73,7 +72,8 @@
         <p>
           {{
             totalPrice > 0
-              ? (totalPrice + 40 | currency : "BRL")
+              ? ((totalPrice >= 900 ? totalPrice : totalPrice + 40)
+                | currency : "BRL")
               : (0 | currency : "BRL")
           }}
         </p>

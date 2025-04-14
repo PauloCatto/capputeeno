@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private router: Router,
-    @Inject(ToastService) public toast: ToastService,
+    private toast: ToastService,
     private translate: TranslateService,
     private cartService: CartService
   ) {}

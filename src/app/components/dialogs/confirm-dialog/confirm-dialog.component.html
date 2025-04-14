@@ -1,12 +1,21 @@
-<h2 mat-dialog-title>{{ "delete_confirmation_title" | translate }}</h2>
-<mat-dialog-content>{{
-  "delete_confirmation_message" | translate
-}}</mat-dialog-content>
+<h2 mat-dialog-title>
+  {{ data.title }}
+</h2>
+
+<mat-dialog-content>
+  {{ data.message }}
+</mat-dialog-content>
+
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">
-    {{ "cancel_button" | translate }}
+  <button *ngIf="data.showCancel !== false" mat-button (click)="onCancel()">
+    {{ data.cancelText  }}
   </button>
-  <button mat-raised-button color="warn" (click)="onConfirm()">
-    {{ "delete_button" | translate }}
+
+  <button *ngIf="data.confirmText"
+    mat-raised-button
+    [color]="data.confirmColor || 'warn'"
+    (click)="onConfirm()"
+  >
+    {{ data.confirmText }}
   </button>
 </mat-dialog-actions>

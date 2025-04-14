@@ -11,3 +11,13 @@ export interface Tab {
   data: Product[];
   dataToShow?: Product[];
 }
+
+export interface ConfirmDialogData {
+  title?: string;
+  message: string;
+  confirmText?: string;
+  cancelText?: string;
+  showCancel?: boolean;
+  confirmColor?: 'primary' | 'accent' | 'warn';
+}
+

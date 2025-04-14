@@ -1,11 +1,7 @@
-.content-header {
-  margin-top: 20px;
-}
-
 .product-container {
   background-color: #f0f0f5;
-  margin: 20px auto;
-  padding: 50px;
+  margin: auto;
+  padding: 36px 34px;
   position: relative;
 }
 
@@ -28,7 +24,7 @@
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
 }
 
 .category {
@@ -98,7 +94,7 @@
 .back-button {
   position: absolute;
   top: 10px;
-  left: 20px;
+  left: 105px;
   font-family: Saira;
   font-weight: 500;
   font-size: 14px;
@@ -137,6 +133,7 @@
 @media (max-width: 600px) {
   .product-container {
     padding: 40px;
+    height: 100vh;
   }
 
   .product-info {

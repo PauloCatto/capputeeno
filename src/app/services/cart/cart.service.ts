@@ -14,7 +14,7 @@ export class CartService {
   private purchasedItemsSubject = new BehaviorSubject<
     (Product & { quantity: number })[]
   >([]);
-  protected purchasedItems$ = this.purchasedItemsSubject.asObservable();
+  public purchasedItems$ = this.purchasedItemsSubject.asObservable();
 
   constructor() {
     const stored = localStorage.getItem('selectedProducts');
@@ -66,4 +66,11 @@ export class CartService {
     const total = this.getTotalQuantity();
     this.totalQuantitySubject.next(total);
   }
+
+  clearCart(): void {
+    this.products = [];
+    localStorage.removeItem('selectedProducts');
+    this.updateTotalQuantity();
+  }
+
 }

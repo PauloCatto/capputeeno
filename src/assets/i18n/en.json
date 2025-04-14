@@ -33,19 +33,7 @@
   "installments_text": "10x no interest",
   "fast_shipping_text": "Fast delivery",
   "QUANTITY_PER_PAGE": "Items per page",
-  "PAYMENT": "Payment",
-  "HOLDER_NAME": "CARDHOLDER NAME",
-  "HOLDER_LABEL": "Cardholder Name",
-  "HOLDER_PLACEHOLDER": "JOHN DOE",
-  "NUMBER_LABEL": "Card Number",
-  "NUMBER_PLACEHOLDER": "**** **** **** ****",
-  "EXPIRY_LABEL": "Expiry Date",
-  "CVV_LABEL": "CVV",
-  "METHOD_LABEL": "Payment Method",
-  "CREDIT_OPTION": "Credit Card",
-  "DEBIT_OPTION": "Debit Card",
-  "INSTALLMENTS_LABEL": "Installments",
-  "INSTALLMENT_OF": "of",
-  "TOTAL": "Total",
-  "PAY_BUTTON": "Complete Payment"
+  "purchase_success_title": "Purchase Completed",
+  "purchase_success_message": "Thank you for your purchase! Your order has been successfully received. Capputeeno Store appreciates your choice and wishes you an excellent experience. See you soon!",
+  "cart_empty_message": "Your cart is empty. Add an item to the cart to continue."
 }

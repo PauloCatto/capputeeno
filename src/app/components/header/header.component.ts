@@ -6,6 +6,7 @@ import { debounceTime } from 'rxjs';
 import { Product } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { CatalogService } from 'src/app/services/catalog/catalog.service';
+import { ToastService } from 'src/app/services/toast/toast.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent {
     public catalogService: CatalogService,
     private translate: TranslateService,
     private cartService: CartService,
-    public router: Router
+    public router: Router,
+    private toast: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,14 @@ export class HeaderComponent {
     this.cartService.totalQuantity$.subscribe((count) => {
       this.cartItemCount = count || 0;
     });
+  }
+
+  validateCart(): void {
+    if (this.cartItemCount > 0) {
+      this.router.navigate(['/shopping-cart']);
+    } else {
+      this.toast.showError(this.translate.instant('cart_empty_message'));
+    }
   }
 
   private setupSearchListener(): void {

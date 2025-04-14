@@ -33,19 +33,7 @@
   "installments_text": "10x sem juros",
   "fast_shipping_text": "Entrega rápida",
   "QUANTITY_PER_PAGE": "Quantidade por página",
-  "PAYMENT": "Pagamento",
-  "HOLDER_NAME": "NOME DO TITULAR",
-  "HOLDER_LABEL": "Nome do Titular",
-  "HOLDER_PLACEHOLDER": "JOÃO DA SILVA",
-  "NUMBER_LABEL": "Número do Cartão",
-  "NUMBER_PLACEHOLDER": "**** **** **** ****",
-  "EXPIRY_LABEL": "Validade",
-  "CVV_LABEL": "CVV",
-  "METHOD_LABEL": "Método de Pagamento",
-  "CREDIT_OPTION": "Cartão de Crédito",
-  "DEBIT_OPTION": "Cartão de Débito",
-  "INSTALLMENTS_LABEL": "Parcelamento",
-  "INSTALLMENT_OF": "de",
-  "TOTAL": "Total",
-  "PAY_BUTTON": "Finalizar Pagamento"
+  "purchase_success_title": "Compra Concluída",
+  "purchase_success_message": "Obrigado por sua compra! Sua encomenda foi recebida com sucesso. A Capputeeno Store agradece a preferência e deseja uma excelente experiência. Até breve!",
+  "cart_empty_message": "O carrinho está vazio. Adicione um item ao carrinho para continuar."
 }
