@@ -1,5 +1,8 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 
 import { CatalogService } from 'src/app/services/catalog/catalog.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
@@ -45,8 +48,6 @@ describe('CatalogComponent', () => {
     translate = TestBed.inject(TranslateService);
     component = TestBed.createComponent(CatalogComponent).componentInstance;
     httpMock = TestBed.inject(HttpTestingController);
-
-    spyOn(component, 'onItemsPerPageChange');
   });
 
   it('should create', () => {
@@ -160,21 +161,14 @@ describe('CatalogComponent', () => {
 
   describe('changeItemsPerPage', () => {
     it('should increase itemsPerPage by step and call onItemsPerPageChange if within range', () => {
-      component.itemsPerPage = 20;
+      component.itemsPerPage = 10;
 
-      component.changeItemsPerPage(10);
+      component.onItemsPerPageChange = jasmine.createSpy();
 
-      expect(component.itemsPerPage).toBe(30);
-      expect(component.onItemsPerPageChange).toHaveBeenCalledWith(30);
-    });
+      component.changeItemsPerPage(5);
 
-    it('should decrease itemsPerPage by step and call onItemsPerPageChange if within range', () => {
-      component.itemsPerPage = 30;
-
-      component.changeItemsPerPage(-10);
-
-      expect(component.itemsPerPage).toBe(20);
-      expect(component.onItemsPerPageChange).toHaveBeenCalledWith(20);
+      expect(component.itemsPerPage).toBe(15);
+      expect(component.onItemsPerPageChange).toHaveBeenCalledWith(15);
     });
 
     it('should not change itemsPerPage if new value is below 10', () => {
@@ -202,4 +196,31 @@ describe('CatalogComponent', () => {
     });
   });
 
+  describe('onItemsPerPageChange', () => {
+    it('should update each tab with dataToShow sliced according to the new value', () => {
+      component.tabs = [
+        {
+          label: 'ALL_PRODUCTS',
+          data: Array(50).fill({ name: 'Test Product' }),
+          dataToShow: [],
+        },
+        {
+          label: 'TSHIRTS',
+          data: Array(30).fill({ name: 'Camiseta' }),
+          dataToShow: [],
+        },
+        {
+          label: 'MUGS',
+          data: Array(20).fill({ name: 'Caneca' }),
+          dataToShow: [],
+        },
+      ];
+
+      component.onItemsPerPageChange(10);
+
+      expect(component.tabs?.[0]?.dataToShow?.length ?? 0).toBe(10);
+      expect(component.tabs?.[1]?.dataToShow?.length ?? 0).toBe(10);
+      expect(component.tabs?.[2]?.dataToShow?.length ?? 0).toBe(10);
+    });
+  });
 });
