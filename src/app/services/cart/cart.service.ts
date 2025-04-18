@@ -72,5 +72,4 @@ export class CartService {
     localStorage.removeItem('selectedProducts');
     this.updateTotalQuantity();
   }
-
 }
