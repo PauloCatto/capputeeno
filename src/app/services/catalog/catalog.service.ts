@@ -10,30 +10,38 @@ export class CatalogService {
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Promise<any> {
-    const query = `
-      query {
-        allProducts {
-          id
-          name
-          description
-          price_in_cents
-          image_url
-        }
+  async getProducts(): Promise<any> {
+    console.log(this.url);
+    try {
+      if (environment.featureFlags.enableGraphQLApi) {
+        const query = `
+          query {
+            allProducts {
+              id
+              name
+              description
+              price_in_cents
+              image_url
+            }
+          }
+        `;
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+        });
+
+        const response = await this.http
+          .post<any>(this.url, { query }, { headers })
+          .toPromise();
+        return response.data.allProducts;
+      } else {
+        const response = await this.http
+          .get<any>(`${this.url}/products`)
+          .toPromise();
+        return response.products;
       }
-    `;
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http
-      .post<any>(this.url, { query }, { headers })
-      .toPromise()
-      .then((response) => response.data.allProducts)
-      .catch((error) => {
-        console.error(error);
-        throw error;
-      });
+    } catch (error) {
+      console.error('Erro ao buscar produtos:', error);
+      throw error;
+    }
   }
 }

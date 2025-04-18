@@ -27,6 +27,7 @@ export class CatalogComponent implements OnInit {
     this.catalogService
       .getProducts()
       .then((data: Product[]) => {
+        console.log(data)
         if (data && data.length > 0) {
           this.processProducts(data);
           this.onItemsPerPageChange(this.itemsPerPage);

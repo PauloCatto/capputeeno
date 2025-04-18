@@ -20,7 +20,7 @@
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
-      "dom",
+      "dom"
     ]
   },
   "angularCompilerOptions": {
@@ -28,5 +28,9 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/environments/*.ts"
+  ]
 }

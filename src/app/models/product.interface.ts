@@ -21,3 +21,10 @@ export interface ConfirmDialogData {
   confirmColor?: 'primary' | 'accent' | 'warn';
 }
 
+export interface Environment {
+  production: boolean;
+  apiUrl: string;
+  featureFlags: {
+    enableGraphQLApi: boolean;
+  };
+}
