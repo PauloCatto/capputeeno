@@ -35,5 +35,15 @@
   "QUANTITY_PER_PAGE": "Quantidade por página",
   "purchase_success_title": "Compra Concluída",
   "purchase_success_message": "Obrigado por sua compra! Sua encomenda foi recebida com sucesso. A Capputeeno Store agradece a preferência e deseja uma excelente experiência. Até breve!",
-  "cart_empty_message": "O carrinho está vazio. Adicione um item ao carrinho para continuar."
+  "cart_empty_message": "O carrinho está vazio. Adicione um item ao carrinho para continuar.",
+  "capputeeno": "Capputeeno",
+  "description": "Seu marketplace favorito de camisetas e canecas.",
+  "usefulLinks": "Links úteis",
+  "aboutUs": "Sobre nós",
+  "privacyPolicy": "Política de Privacidade",
+  "termsOfUse": "Termos de Uso",
+  "contact": "Contato",
+  "payment": "Pagamento",
+  "language": "Idioma",
+  "copyright": "&copy; 2025 Capputeeno. Todos os direitos reservados."
 }

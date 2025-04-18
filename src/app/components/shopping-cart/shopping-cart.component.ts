@@ -79,6 +79,7 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
   updateCartStatus(): void {
+    console.log(this.products.length)
     this.hasFewProducts = this.products.length <= 2;
   }
 

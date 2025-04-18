@@ -35,5 +35,15 @@
   "QUANTITY_PER_PAGE": "Cantidad por página",
   "purchase_success_title": "Compra Completada",
   "purchase_success_message": "¡Gracias por tu compra! Tu pedido ha sido recibido con éxito. Capputeeno Store agradece tu preferencia y te desea una excelente experiencia. ¡Hasta pronto!",
-  "cart_empty_message": "Tu carrito está vacío. Agrega un artículo al carrito para continuar."
+  "cart_empty_message": "Tu carrito está vacío. Agrega un artículo al carrito para continuar.",
+  "capputeeno": "Capputeeno",
+  "description": "Tu mercado favorito de camisetas y tazas.",
+  "usefulLinks": "Enlaces útiles",
+  "aboutUs": "Sobre nosotros",
+  "privacyPolicy": "Política de privacidad",
+  "termsOfUse": "Términos de uso",
+  "contact": "Contacto",
+  "payment": "Pago",
+  "language": "Idioma",
+  "copyright": "&copy; 2025 Capputeeno. Todos los derechos reservados."
 }

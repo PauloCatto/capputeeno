@@ -11,7 +11,6 @@ export class CatalogService {
   constructor(private http: HttpClient) {}
 
   async getProducts(): Promise<any> {
-    console.log(this.url);
     try {
       if (environment.featureFlags.enableGraphQLApi) {
         const query = `

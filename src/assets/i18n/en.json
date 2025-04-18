@@ -35,5 +35,15 @@
   "QUANTITY_PER_PAGE": "Items per page",
   "purchase_success_title": "Purchase Completed",
   "purchase_success_message": "Thank you for your purchase! Your order has been successfully received. Capputeeno Store appreciates your choice and wishes you an excellent experience. See you soon!",
-  "cart_empty_message": "Your cart is empty. Add an item to the cart to continue."
+  "cart_empty_message": "Your cart is empty. Add an item to the cart to continue.",
+  "capputeeno": "Capputeeno",
+  "description": "Your favorite marketplace for t-shirts and mugs.",
+  "usefulLinks": "Useful Links",
+  "aboutUs": "About Us",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfUse": "Terms of Use",
+  "contact": "Contact",
+  "payment": "Payment",
+  "language": "Language",
+  "copyright": "&copy; 2025 Capputeeno. All rights reserved."
 }
