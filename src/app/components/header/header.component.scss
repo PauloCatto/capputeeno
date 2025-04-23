@@ -200,4 +200,10 @@
       transform: translateX(-100%);
     }
   }
+
+  @media (max-width: 300px) {
+    .scrolling-banner {
+      width: 150px;
+    }
+  }
 }
