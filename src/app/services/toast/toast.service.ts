@@ -10,7 +10,6 @@ export class ToastService {
   showSuccess(message: string): void {
     this.snackBar.open(message, 'X', {
       duration: 2000,
-      panelClass: ['toast-success'],
       verticalPosition: 'top',
       horizontalPosition: 'center',
     });
@@ -19,7 +18,6 @@ export class ToastService {
   showError(message: string): void {
     this.snackBar.open(message, 'X', {
       duration: 4000,
-      panelClass: ['toast-error'],
       verticalPosition: 'top',
       horizontalPosition: 'center',
     });

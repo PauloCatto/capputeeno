@@ -14,8 +14,20 @@ body {
   z-index: 9999;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #ffffff99;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.mdc-snackbar__surface {
+  margin-top: 30px;
+}
+
+.mat-mdc-snack-bar-label {
+  font-size: 18px !important;
+}
+
+.mdc-button__label {
+  font-size: 20px !important;
 }

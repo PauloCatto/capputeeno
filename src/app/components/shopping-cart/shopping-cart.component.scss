@@ -75,6 +75,7 @@
 }
 
 .cart-item {
+  margin: 10px;
   display: flex;
   align-items: center;
   background: #fff;
@@ -113,6 +114,7 @@
 
 .description {
   font-size: 12px;
+  width: 95%;
   margin: 2px 0 15px;
   color: #555;
 }
@@ -369,12 +371,16 @@ option {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
+  .back-button {
+    left: -22px
+  }
+
   .cart-header-info {
     gap: 10px;
     align-items: baseline;
-
-
+    justify-content: left !important;
+    margin: 0px;
   }
 }
 
