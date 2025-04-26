@@ -8,14 +8,16 @@
 
 <div class="cart-container">
   <div class="cart-header">
-    <button
-      class="back-button"
-      [routerLink]="products.length > 0 ? '/product' : '/home'"
-    >
-      <i class="material-icons">arrow_back</i> {{ "back" | translate }}
-    </button>
-    <div class="cart-header-info">
+      <button
+        class="back-button"
+        [routerLink]="products.length > 0 ? '/product' : '/home'"
+      >
+        <i class="material-icons">arrow_back</i> {{ "back" | translate }}
+      </button>
+    <div class="cart-header-title">
       <h1 class="title">{{ "your_cart" | translate }}</h1>
+    </div>
+    <div class="cart-header-info">
       <p class="total-produtos">
         {{ "total_products" | translate : { quantity: totalQuantity } }}
       </p>
