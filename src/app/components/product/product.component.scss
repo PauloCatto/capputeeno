@@ -10,6 +10,7 @@
   grid-template-columns: 1fr 1.2fr;
   gap: 40px;
   margin-left: 70px;
+  margin-top: 15px;
 }
 
 .product-image img {
@@ -133,16 +134,21 @@
 @media (max-width: 600px) {
   .product-container {
     padding: 40px;
-    height: 100vh;
+    height: 80vh;
   }
 
   .product-info {
-    align-items: center;
+    gap: 10px;
   }
 
   .product-image img {
     max-width: 80%;
   }
+
+  .name {
+    font-size: 22px;
+  }
+
 
   .back-button {
     background: none;

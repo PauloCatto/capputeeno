@@ -49,6 +49,11 @@
   .cart-header-info {
     display: flex;
     gap: 5px;
+    align-items: center;
+
+    .total-produtos {
+      margin-left: 30px;
+    }
 
     .total-produtos,
     .value {
@@ -256,16 +261,20 @@ option {
 
 @media (max-width: 1300px) {
   .cart-header {
-    display: block;
+    margin-left: 20px;
+    margin-top: 0px;
 
     .title {
       text-align: center;
     }
 
     .cart-header-info {
-      display: block;
-      text-align: center;
+      justify-content: center;
     }
+  }
+
+  .total-produtos {
+    margin-left: 70px;
   }
 
   .cart-content {
@@ -282,10 +291,6 @@ option {
   .cart-summary {
     width: 90%;
     margin: 0 auto;
-  }
-
-  .cart-header {
-    margin-left: 20px;
   }
 
   .back-button {
@@ -314,8 +319,16 @@ option {
   }
 
   .cart-header-info {
-    flex-direction: column;
-    text-align: center;
+    align-items: center;
+
+    .title {
+      font-size: 20px !important;
+    }
+
+    .total-produtos,
+    .value {
+      font-size: 18px !important;
+    }
   }
 
   .cart-container {
@@ -333,7 +346,7 @@ option {
   }
 
   .item-info {
-    margin: 15px;
+    margin: 30px 20px 0px;
   }
 }
 
@@ -342,8 +355,26 @@ option {
     margin-top: 0px;
   }
 
+  .title {
+    font-size: 16px !important;
+  }
+
+  .total-produtos,
+  .value {
+    font-size: 16px !important;
+  }
+
   .back-button {
     left: 0px;
+  }
+}
+
+@media (max-width: 420px) {
+  .cart-header-info {
+    gap: 10px;
+    align-items: baseline;
+
+
   }
 }
 
