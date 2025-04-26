@@ -188,7 +188,7 @@
     }
 
     .search-container mat-form-field {
-      width: 90%;
+      width: 70%;
     }
   }
 
@@ -204,6 +204,10 @@
   @media (max-width: 300px) {
     .scrolling-banner {
       width: 150px;
+    }
+
+    .search-container mat-form-field {
+      width: 50%;
     }
   }
 }
