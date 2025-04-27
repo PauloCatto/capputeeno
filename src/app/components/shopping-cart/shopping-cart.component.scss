@@ -56,7 +56,6 @@
     gap: 5px;
     align-items: center;
 
-
     .total-produtos,
     .value {
       font-family: Saira;
@@ -265,14 +264,16 @@ option {
 
 @media (max-width: 1300px) {
   .cart-header {
-    margin-left: 20px;
+    margin-left: 50px;
     margin-top: 0px;
 
     .title {
       text-align: center;
     }
+  }
 
-
+  .back-button {
+    left: -10px !important;
   }
 
   .cart-content {
@@ -303,7 +304,7 @@ option {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .cart-item {
     flex-direction: column;
     align-items: flex-start;
@@ -314,6 +315,10 @@ option {
     align-items: flex-start;
     gap: 8px;
     margin-right: 0;
+  }
+
+  .cart-header {
+    margin-left: 20px;
   }
 
   .cart-header-info {
@@ -369,9 +374,8 @@ option {
 
 @media (max-width: 430px) {
   .back-button {
-    left: -22px
+    left: -22px;
   }
-
 
   .cart-header-info {
     gap: 10px;
