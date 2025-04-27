@@ -16,7 +16,7 @@
 .back-button {
   position: absolute;
   top: 105px;
-  left: 110px;
+  left: 120px;
   font-family: Saira;
   font-weight: 500;
   font-size: 14px;
@@ -35,7 +35,7 @@
 }
 
 .cart-header {
-  margin-left: 100px;
+  margin-left: 110px;
   margin-top: 40px;
 
   .cart-header-title {
@@ -264,16 +264,20 @@ option {
 
 @media (max-width: 1300px) {
   .cart-header {
-    margin-left: 50px;
+    margin-left: 20px;
     margin-top: 0px;
 
     .title {
       text-align: center;
     }
+
+    .cart-header-info {
+      justify-content: center;
+    }
   }
 
-  .back-button {
-    left: -10px !important;
+  .total-produtos {
+    margin-left: 70px;
   }
 
   .cart-content {
@@ -304,7 +308,7 @@ option {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   .cart-item {
     flex-direction: column;
     align-items: flex-start;
@@ -315,10 +319,6 @@ option {
     align-items: flex-start;
     gap: 8px;
     margin-right: 0;
-  }
-
-  .cart-header {
-    margin-left: 20px;
   }
 
   .cart-header-info {
@@ -374,7 +374,7 @@ option {
 
 @media (max-width: 430px) {
   .back-button {
-    left: -22px;
+    left: -22px
   }
 
   .cart-header-info {
@@ -384,9 +384,6 @@ option {
     margin: 0px;
   }
 
-  .title {
-    font-size: 18px !important;
-  }
 }
 
 @media (max-width: 330px) {

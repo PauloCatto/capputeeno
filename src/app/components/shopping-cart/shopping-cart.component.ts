@@ -74,10 +74,16 @@ export class ShoppingCartComponent implements OnInit {
           this.products = this.products.filter((p) => p.id !== product.id);
           this.cartService.updateCart(this.products);
           this.updateCartStatus();
+          this.verifyQuantity();
         }
       });
     });
   }
+
+  verifyQuantity(): void {
+    this.products.length === 0 ? this.router.navigate(['/']) : '';
+  }
+
   updateCartStatus(): void {
     this.hasFewProducts = this.products.length <= 2;
   }

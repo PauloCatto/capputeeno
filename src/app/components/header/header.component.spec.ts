@@ -64,6 +64,7 @@ describe('HeaderComponent', () => {
 
   const mockRouter = {
     navigate: jasmine.createSpy('navigate'),
+    url: '/',
   };
 
   const mockToast = {
