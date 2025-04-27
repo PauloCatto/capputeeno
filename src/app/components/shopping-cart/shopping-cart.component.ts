@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   loading: boolean = false;
 
   constructor(
-    private cartService: CartService,
+    public cartService: CartService,
     private dialog: MatDialog,
     private translate: TranslateService,
     private router: Router
