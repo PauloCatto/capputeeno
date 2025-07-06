@@ -35,13 +35,13 @@ export class HeaderComponent {
     this.setupSearchListener();
   }
 
-  private initLanguage(): void {
+  initLanguage(): void {
     const savedLang = localStorage.getItem('lang') || 'en';
     this.translate.use(savedLang);
     this.currentLang = savedLang;
   }
 
-  private subscribeToCart(): void {
+  subscribeToCart(): void {
     this.cartService.totalQuantity$.subscribe((count) => {
       this.cartItemCount = count || 0;
     });
@@ -55,7 +55,7 @@ export class HeaderComponent {
     }
   }
 
-  private setupSearchListener(): void {
+  setupSearchListener(): void {
     this.searchControl.valueChanges
       .pipe(debounceTime(300))
       .subscribe((inputValue: string | null) => {
@@ -63,7 +63,7 @@ export class HeaderComponent {
       });
   }
 
-  private searchProducts(input: string): void {
+  searchProducts(input: string): void {
     const value = input?.trim().toLowerCase();
 
     if (!value || value.length < 2) {
@@ -89,11 +89,11 @@ export class HeaderComponent {
       .catch((error) => console.error(error));
   }
 
-  toggleDropdown() {
+  toggleDropdown(): void {
     this.showDropdown = !this.showDropdown;
   }
 
-  switchLanguage(lang: string) {
+  switchLanguage(lang: string): void {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
     this.currentLang = lang;
