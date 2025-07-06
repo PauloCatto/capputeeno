@@ -28,3 +28,9 @@ export interface Environment {
     enableGraphQLApi: boolean;
   };
 }
+
+export interface SearchEvent {
+  results: Product[];
+  typed: boolean;
+  found: boolean;
+}

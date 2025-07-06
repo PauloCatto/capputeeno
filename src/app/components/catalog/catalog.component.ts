@@ -11,6 +11,9 @@ import { CatalogService } from 'src/app/services/catalog/catalog.service';
 })
 export class CatalogComponent implements OnInit {
   @Input() filtered: Product[] = [];
+  @Input() typed!: boolean;
+  @Input() found!: boolean;
+
   products: Product[] = [];
   tabs: Tab[] = [];
   selectedTab = 0;

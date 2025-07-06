@@ -1,3 +1,7 @@
-<app-header (searchResults)="filteredProducts = $event"></app-header>
-<app-catalog [filtered]="filteredProducts"></app-catalog>
+<app-header (searchResults)="searchState = $event"></app-header>
+<app-catalog
+  [filtered]="searchState?.results || []"
+  [typed]="searchState?.typed || false"
+  [found]="searchState?.found || false"
+></app-catalog>
 <app-footer></app-footer>

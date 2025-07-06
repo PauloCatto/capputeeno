@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/app/models/product.interface';
+import { Product, SearchEvent } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +8,11 @@ import { Product } from 'src/app/models/product.interface';
 })
 export class HomeComponent {
   filteredProducts: Product[] = [];
+  searchState!: SearchEvent;
 
   constructor(){}
 
-  updateFilteredProducts(products: Product[]) {
-    this.filteredProducts = products;
+  updateSearchState(event: SearchEvent): void {
+    this.searchState = event;
   }
 }

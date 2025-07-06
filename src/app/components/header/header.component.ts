@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { debounceTime } from 'rxjs';
-import { Product } from 'src/app/models/product.interface';
+import { Product, SearchEvent } from 'src/app/models/product.interface';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { CatalogService } from 'src/app/services/catalog/catalog.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
@@ -14,10 +14,10 @@ import { ToastService } from 'src/app/services/toast/toast.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() searchResults = new EventEmitter<Product[]>();
+  @Output() searchResults = new EventEmitter<SearchEvent>();
   searchControl = new FormControl('');
   filteredProducts: Product[] = [];
-  showDropdown = false;
+  showDropdown: boolean = false;
   cartItemCount: number = 0;
   currentLang: string = '';
 
@@ -66,9 +66,13 @@ export class HeaderComponent {
   searchProducts(input: string): void {
     const value = input?.trim().toLowerCase();
 
-    if (!value || value.length < 2) {
+    if (!value || value.length < 3) {
       this.filteredProducts = [];
-      this.searchResults.emit(this.filteredProducts);
+      this.searchResults.emit({
+        results: [],
+        typed: false,
+        found: false,
+      });
       return;
     }
 
@@ -78,13 +82,17 @@ export class HeaderComponent {
         const words = value
           .split(' ')
           .map((word) => word.trim())
-          .filter((word) => word.length >= 2);
+          .filter((word) => word.length >= 3);
 
         this.filteredProducts = data.filter((product) =>
           words.every((word) => product.name.toLowerCase().includes(word))
         );
 
-        this.searchResults.emit(this.filteredProducts);
+        this.searchResults.emit({
+          results: this.filteredProducts,
+          typed: true,
+          found: this.filteredProducts.length > 0,
+        });
       })
       .catch((error) => console.error(error));
   }
