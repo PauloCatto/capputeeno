@@ -50,23 +50,40 @@ A cobertura dos testes unitários foram configuradas para garantir uma cobertura
 
 ## 📦 Como Rodar Localmente
 
+### 1. Frontend (Aplicação Angular)
+
 ```bash
-git clone https://github.com/seu-usuario/capputeeno.git
+# Clone o repositório
+git clone https://github.com/PauloCatto/capputeeno.git
+
+# Acesse a pasta do projeto
 cd capputeeno
+
+# Instale todas as dependências
 npm install
-npm install @ngx-translate/core
-npm install @ngx-translate/http-loader
-npm install @angular/material
-npm install @angular/cdk
-npm install @angular/animations
+
+# Inicie o servidor de desenvolvimento
 ng serve -o
+```
 
-O comando ng serve -o irá abrir o projeto no navegador em http://localhost:4200/.
-Certifique-se de que o backend esteja rodando para a aplicação funcionar corretamente.
+> **Nota:** O comando `ng serve -o` irá compilar a aplicação e abri-la automaticamente no seu navegador padrão em `http://localhost:4200/`.
 
-### Backend (API mockada da Rocketseat)
-git clone https://github.com/Rocketseat/frontend-challenge.git
-cd frontend-challenge
+---
+
+### 2. Backend (Integração e API)
+
+Para que a loja exiba os produtos e o ambiente de pagamentos PIX funcione corretamente, certifique-se de iniciar a API Backend em conjunto:
+
+```bash
+# Clone o repositório da API
+git clone https://github.com/PauloCatto/API-Capputeeno.git
+
+# Acesse a pasta do backend
+cd API-Capputeeno
+
+# Instale as dependências
 npm install
-npm start
 
+# Inicie o servidor
+npm start
+```
