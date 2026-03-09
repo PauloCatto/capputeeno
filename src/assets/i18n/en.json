@@ -45,5 +45,22 @@
   "contact": "Contact",
   "payment": "Payment",
   "language": "Language",
-  "copyright": "&copy; 2025 Capputeeno. All rights reserved."
+  "copyright": "&copy; 2025 Capputeeno. All rights reserved.",
+  "empty_cart_title": "Your cart is empty!",
+  "empty_cart_subtitle": "Go to the store and add some products.",
+  "explore_store": "Explore Store",
+  "order_placed": "Order Placed!",
+  "pix_generated": "Your PIX charge was generated successfully by Asaas.",
+  "scan_qr": "Scan the QR Code below:",
+  "step_1": "1. Open your bank app",
+  "step_2": "2. Choose \"PIX QR Code\" and point your camera",
+  "copy_paste": "Or use the Copy and Paste key:",
+  "copy_key": "Copy Key",
+  "waiting_payment": "Waiting for payment confirmation...",
+  "back_to_store": "Back to Store",
+  "pix_copied": "PIX code copied successfully!",
+  "warning": "Warning",
+  "pix_generation_error": "Could not generate PIX data.",
+  "payment_error": "Payment Error",
+  "asaas_error": "An error occurred while generating the charge in Asaas. Please check your API key in the backend."
 }
