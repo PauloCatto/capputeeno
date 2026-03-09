@@ -1,38 +1,38 @@
-<div>
-  <app-header></app-header>
-</div>
+<div class="product-page">
+  <div class="spinner-container" *ngIf="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
 
-<div class="spinner-container" *ngIf="loading">
-  <mat-spinner diameter="50"></mat-spinner>
-</div>
+  <div *ngIf="product" class="product-container">
+    <button class="back-button" [routerLink]="'/'">
+      <mat-icon>arrow_back</mat-icon> {{ 'back' | translate }}
+    </button>
 
-<div *ngIf="product" class="product-container">
-  <button class="back-button" [routerLink]="'/'">
-    <i class="material-icons">arrow_back</i> {{ 'back' | translate }}
-  </button>
+    <div class="product-grid">
+      <div class="product-image">
+        <img [src]="product.image_url" alt="{{ product.name }}">
+      </div>
 
-  <div class="product-grid">
-    <div class="product-image">
-      <img [src]="product.image_url" alt="{{ product.name }}">
-    </div>
+      <div class="product-info">
+        <span class="category-label">{{ product.category | uppercase }}</span>
+        <h2 class="name">{{ product.name }}</h2>
 
-    <div class="product-info">
-      <h2 class="name">{{ product.name }}</h2>
+        <p class="price">{{ (product.price_in_cents / 100) | currency: 'BRL' }}</p>
 
-      <p class="price">{{ product.price_in_cents / 100 | currency: 'BRL' }}</p>
+        <span class="frete">* {{ 'frete_info' | translate }}</span>
 
-      <span class="frete">{{ 'frete_info' | translate }}</span>
+        <div class="description-box">
+          <span class="description-label">{{ 'description_label' | translate }}</span>
+          <p class="description">{{ product.description }}</p>
+        </div>
 
-      <span class="description-label">{{ 'description_label' | translate }}</span>
-      <p class="description">{{ product.description }}</p>
-
-      <button class="add-to-cart" (click)="addToCart(product)">
-        <i class="material-icons">shopping_cart</i> {{ 'add_to_cart' | translate }}
-      </button>
+        <button class="add-to-cart" (click)="addToCart(product)">
+          <mat-icon>shopping_cart_checkout</mat-icon>
+          {{ 'add_to_cart' | translate }}
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
 <app-footer></app-footer>
-
-

@@ -1,164 +1,198 @@
-.product-container {
-  background-color: #f0f0f5;
-  margin: auto;
-  padding: 36px 34px;
-  position: relative;
+.product-page {
+  min-height: calc(100vh - 80px);
+  background-color: var(--bg-color);
+  padding: 40px var(--container-px, 120px) 80px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.back-button {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  background: transparent;
+  transition: var(--transition);
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: -16px;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-primary);
+  }
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
-  margin-left: 70px;
-  margin-top: 15px;
-}
-
-.product-image img {
-  object-fit: cover;
-  border-radius: 10px;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-.product-info {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.category {
-  font-family: Saira;
-  font-weight: 400;
-  font-size: 18px;
-  color: #41414d;
-}
-
-.name {
-  font-family: Saira;
-  font-weight: 300;
-  font-size: 32px;
-  color: #41414d;
-}
-
-.price {
-  font-family: Saira;
-  font-weight: 600;
-  font-size: 20px;
-  color: #09090a;
-}
-
-.frete {
-  font-family: Saira;
-  font-weight: 400;
-  font-size: 12px;
-  color: #41414d;
-}
-
-.description-label {
-  font-family: Saira;
-  font-weight: 500;
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #737380;
-}
-
-.description {
-  font-family: Saira;
-  font-weight: 400;
-  font-size: 14px;
-  color: #41414d;
-  height: 60px;
+  background: var(--surface-color);
+  border-radius: var(--border-radius, 16px);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-.add-to-cart {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #115d8c;
-  color: white;
-  font-size: 18px;
-  padding: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  gap: 10px;
-}
+  .product-image {
+    width: 100%;
 
-.add-to-cart:hover {
-  background-color: #0e4a6f;
-}
-
-.back-button {
-  position: absolute;
-  top: 10px;
-  left: 105px;
-  font-family: Saira;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  vertical-align: middle;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  color: #617480;
-}
-
-.back-button i {
-  font-size: 20px;
-  margin-right: 5px;
-}
-
-@media (max-width: 1024px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-  }
-
-  .product-image img {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .back-button {
-    font-size: 12px;
-    left: 10px;
-  }
-}
-
-@media (max-width: 600px) {
-  .product-container {
-    padding: 40px;
-    height: 80vh;
+    img {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      object-fit: cover;
+    }
   }
 
   .product-info {
-    gap: 10px;
+    padding: 40px 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+
+    .category-label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin: 0 0 16px 0;
+    }
+
+    .price {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--primary-color-dark);
+      margin: 0 0 16px 0;
+    }
+
+    .frete {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      display: inline-block;
+    }
+
+    .description-box {
+      margin-bottom: auto;
+
+      .description-label {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--text-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .description {
+        font-family: 'Outfit', sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+    }
+
+    .add-to-cart {
+      margin-top: 32px;
+      width: 100%;
+      padding: 16px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+
+      mat-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        background: var(--primary-color-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 165, 133, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .product-page {
+    padding: 32px 40px 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    .product-image img {
+      height: 400px;
+      min-height: auto;
+    }
+
+    .product-info {
+      padding: 32px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .product-page {
+    padding: 24px 20px 40px;
   }
 
-  .product-image img {
-    max-width: 80%;
-  }
+  .product-grid {
+    .product-info {
+      padding: 24px;
 
-  .name {
-    font-size: 22px;
-  }
+      .name {
+        font-size: 24px;
+      }
 
-
-  .back-button {
-    background: none;
-    font-size: 12px;
-    left: 10px;
-    padding: 5px;
-  }
-
-  .add-to-cart {
-    font-size: 16px;
-    padding: 10px;
+      .price {
+        font-size: 24px;
+      }
+    }
   }
 }
