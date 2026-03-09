@@ -1,10 +1,45 @@
+:root {
+  --primary-color: #FFA585;
+  --primary-color-dark: #FF8F6A;
+  --bg-color: #F8F8FA;
+  --surface-color: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #737380;
+  --text-light: #A0A0B2;
+  --border-color: #E2E2E6;
+  --border-radius: 12px;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --container-px: clamp(16px, 5vw, 120px);
+}
+
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--bg-color);
+  font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .spinner-container {
@@ -14,7 +49,8 @@ body {
   z-index: 9999;
   width: 100vw;
   height: 100vh;
-  background-color: #ffffff99;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,12 +58,15 @@ body {
 
 .mdc-snackbar__surface {
   margin-top: 30px;
+  border-radius: 8px !important;
 }
 
 .mat-mdc-snack-bar-label {
-  font-size: 18px !important;
+  font-size: 16px !important;
+  font-family: 'Outfit', sans-serif !important;
 }
 
 .mdc-button__label {
-  font-size: 20px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 500 !important;
 }
