@@ -1,7 +1,4 @@
 <app-header (searchResults)="searchState = $event"></app-header>
-<app-catalog
-  [filtered]="searchState?.results || []"
-  [typed]="searchState?.typed || false"
-  [found]="searchState?.found || false"
-></app-catalog>
+<app-catalog [filtered]="searchState.results || []" [typed]="searchState.typed || false"
+  [found]="searchState.found || false"></app-catalog>
 <app-footer></app-footer>
