@@ -8,9 +8,9 @@ import { Product, SearchEvent } from 'src/app/models/product.interface';
 })
 export class HomeComponent {
   filteredProducts: Product[] = [];
-  searchState!: SearchEvent;
+  searchState: SearchEvent = { typed: false, found: false, results: [] };
 
-  constructor(){}
+  constructor() { }
 
   updateSearchState(event: SearchEvent): void {
     this.searchState = event;
