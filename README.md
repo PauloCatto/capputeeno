@@ -15,6 +15,7 @@ Veja o desafio aqui: [https://github.com/Rocketseat/frontend-challenge](https://
 - 🛒 Carrinho de compras com:  
   - Persistência no `localStorage`  
   - Gerenciamento de estado com `BehaviorSubject`  
+- 💸 Integração de Pagamentos **PIX** via **Asaas API** (Geração de QR Code e chave Copia/Cola)
 - 📦 Feedback visual com **Angular Material Snackbar**  
 - 📱 Layout responsivo e clean  
 
@@ -34,6 +35,14 @@ O carrinho é gerenciado de forma reativa, utilizando `BehaviorSubject` para:
 - Emitir mudanças na quantidade total de produtos  
 - Compartilhar estado entre componentes (como o header)  
 - Atualizar visualmente a aplicação em tempo real  
+
+### 💳 Integração com Gateway de Pagamento (Asaas)
+
+O checkout do carrinho foi integrado a uma API Node/Express rodando do lado do servidor via ambiente Sandbox do [Asaas](https://www.asaas.com/).  
+Ao finalizar a compra:
+1. O Front-end interage com o backend local do projeto.
+2. O servidor cria um "Cliente Acadêmico" na API de Sandbox do Asaas e gera uma fatura modelo **PIX**.
+3. A interface do Angular é instantaneamente comutada para um **Layout de Sucesso de Pagamento** contendo o QR Code visual gerado pela API para escaneamento, juntamente da chave de *Copia e Cola* mapeada para o fluxo de transferências do usuário.
 
 ---
 
