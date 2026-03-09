@@ -7,98 +7,134 @@
 </div>
 
 <div class="cart-container">
-  <div class="cart-header">
-      <button
-        class="back-button"
-        [routerLink]="products.length > 0 ? '/product' : '/home'"
-      >
-        <i class="material-icons">arrow_back</i> {{ "back" | translate }}
+  <div class="cart-wrapper" *ngIf="!paymentSuccess">
+    <div class="cart-header">
+      <button class="back-button" [routerLink]="products.length > 0 ? '/product' : '/home'">
+        <mat-icon>arrow_back</mat-icon> {{ "back" | translate }}
       </button>
-    <div class="cart-header-title">
-      <h1 class="title">{{ "your_cart" | translate }}</h1>
+
+      <div class="cart-header-title">
+        <h1 class="title">{{ "your_cart" | translate }}</h1>
+      </div>
+
+      <div class="cart-header-info">
+        <p class="total-produtos">
+          {{ "total_products" | translate : { quantity: totalQuantity } }}
+        </p>
+        <p class="value">{{ totalPrice | currency : "BRL" }}</p>
+      </div>
     </div>
-    <div class="cart-header-info">
-      <p class="total-produtos">
-        {{ "total_products" | translate : { quantity: totalQuantity } }}
-      </p>
-      <p class="value">{{ totalPrice | currency : "BRL" }}</p>
+
+    <div class="cart-content">
+      <div class="empty-cart-message" *ngIf="products.length === 0">
+        <mat-icon class="empty-icon">shopping_cart_checkout</mat-icon>
+        <h2>{{ "empty_cart_title" | translate }}</h2>
+        <p>{{ "empty_cart_subtitle" | translate }}</p>
+        <button mat-flat-button color="primary" routerLink="/home">{{ "explore_store" | translate }}</button>
+      </div>
+
+      <div class="cart-items" *ngIf="products.length > 0">
+        <div class="cart-item" *ngFor="let item of products">
+          <img class="image" [src]="item.image_url" alt="{{ item.name }}" />
+          <div class="item-info">
+            <div class="item-header">
+              <h2>{{ item.name }}</h2>
+              <button (click)="removeItem(item)" class="delete-button" title="Remover">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </div>
+            <p class="description">{{ item.description }}</p>
+            <div class="item-details">
+              <div class="quantity-control">
+                <button (click)="decreaseQuantity(item)" [disabled]="item.quantity <= 1">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span class="qty-number">{{ item.quantity }}</span>
+                <button (click)="increaseQuantity(item)">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+              <p class="price">
+                {{ (item.price_in_cents * item.quantity) / 100 | currency : "BRL" }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-summary" *ngIf="products.length > 0">
+        <h2>{{ "order_summary" | translate }}</h2>
+
+        <div class="summary-sub">
+          <p>{{ "subtotal" | translate }}</p>
+          <p>{{ totalPrice | currency : "BRL" }}</p>
+        </div>
+
+        <div class="summary-entrega" *ngIf="totalPrice < 900">
+          <p>{{ "delivery" | translate }}</p>
+          <p>R$ 40,00</p>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="summary-total">
+          <p class="total-label">{{ "total" | translate }}</p>
+          <p class="total-value">
+            {{ totalPrice > 0 ? ((totalPrice >= 900 ? totalPrice : totalPrice + 40) | currency : "BRL") : (0 | currency
+            : "BRL") }}
+          </p>
+        </div>
+
+        <button class="add-purchase-button" (click)="finishPurchase()">
+          {{ "finish_purchase" | translate }} <mat-icon>arrow_forward</mat-icon>
+        </button>
+
+        <div class="cart-info">
+          <a><mat-icon>help_outline</mat-icon> {{ "help" | translate }}</a>
+          <a><mat-icon>replay</mat-icon> {{ "refunds" | translate }}</a>
+          <a><mat-icon>local_shipping</mat-icon> {{ "shipping" | translate }}</a>
+          <a><mat-icon>swap_horiz</mat-icon> {{ "exchanges" | translate }}</a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="cart-content">
-    <div class="cart-items">
-      <div class="cart-item" *ngFor="let item of products">
-        <img class="image" [src]="item.image_url" alt="{{ item.name }}" />
-        <div class="item-info">
-          <div class="item-header">
-            <h2>{{ item.name }}</h2>
-            <button (click)="removeItem(item)" class="delete-button">
-              <i class="material-icons">delete_forever</i>
-            </button>
-          </div>
-          <p class="description">{{ item.description }}</p>
-          <div class="item-details">
-            <div class="quantity-control">
-              <button
-                (click)="decreaseQuantity(item)"
-                [disabled]="item.quantity <= 1"
-              >
-                −
-              </button>
-              <span>{{ item.quantity }}</span>
-              <button (click)="increaseQuantity(item)">+</button>
-            </div>
-            <p class="price">
-              {{
-                (item.price_in_cents * item.quantity) / 100 | currency : "BRL"
-              }}
-            </p>
-          </div>
+  <div class="payment-success-card" *ngIf="paymentSuccess">
+    <div class="success-header">
+      <div class="check-icon">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <h2>{{ "order_placed" | translate }}</h2>
+      <p>{{ "pix_generated" | translate }}</p>
+    </div>
+
+    <div class="pix-container" *ngIf="pixData">
+      <div class="pix-instructions">
+        <h3>{{ "scan_qr" | translate }}</h3>
+        <p>{{ "step_1" | translate }}</p>
+        <p>{{ "step_2" | translate }}</p>
+      </div>
+
+      <img *ngIf="pixData.encodedImage"
+        [src]="pixData.encodedImage.startsWith('http') ? pixData.encodedImage : 'data:image/png;base64,' + pixData.encodedImage"
+        alt="QR Code PIX" class="pix-qr" />
+
+      <div class="pix-copy-paste">
+        <span>{{ "copy_paste" | translate }}</span>
+        <div class="copy-input-group">
+          <input type="text" [value]="pixData.payload" readonly />
+          <button (click)="copyPixPaste()" [title]="'copy_key' | translate">
+            <mat-icon>content_copy</mat-icon>
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="cart-summary" [ngClass]="{ 'empty-cart': hasFewProducts }">
-      <h2>{{ "order_summary" | translate }}</h2>
-      <div class="summary-sub">
-        <p>{{ "subtotal" | translate }}</p>
-        <p>{{ totalPrice | currency : "BRL" }}</p>
-      </div>
-      <div class="summary-entrega" *ngIf="totalPrice < 900">
-        <p>{{ "delivery" | translate }}</p>
-        <p>R$ 40,00</p>
-      </div>
-      <hr class="divider" />
-      <div class="summary-total">
-        <p class="total">{{ "total" | translate }}</p>
-        <p>
-          {{
-            totalPrice > 0
-              ? ((totalPrice >= 900 ? totalPrice : totalPrice + 40)
-                | currency : "BRL")
-              : (0 | currency : "BRL")
-          }}
-        </p>
-      </div>
-
-      <button class="add-purchase-button" (click)="finishPurchase()">
-        {{ "finish_purchase" | translate }}
+    <div class="success-footer">
+      <p class="waiting-text">{{ "waiting_payment" | translate }}</p>
+      <button class="continue-shopping" routerLink="/home" mat-flat-button>
+        {{ "back_to_store" | translate }}
       </button>
-
-      <div class="cart-info" [ngClass]="{ 'empty-info': hasFewProducts }">
-        <p>
-          <a href="#">{{ "help" | translate }}</a>
-        </p>
-        <p>
-          <a href="#">{{ "refunds" | translate }}</a>
-        </p>
-        <p>
-          <a href="#">{{ "shipping" | translate }}</a>
-        </p>
-        <p>
-          <a href="#">{{ "exchanges" | translate }}</a>
-        </p>
-      </div>
     </div>
   </div>
 </div>
